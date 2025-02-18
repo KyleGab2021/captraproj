@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Codec Warm Trial';
+    src: url('./fonts/Codec-Warm-Light-trial.ttf') format('truetype'); /* Light variant of the font */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Codec Warm Trial';
+    src: url('./fonts/Codec-Warm-ExtraBold-trial.ttf') format('truetype'); /* Bold Italic variant of the font */
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Codec Warm Trial';
+    src: url('./fonts/Codec-Warm-ExtraLight-Italic-trial.ttf') format('truetype'); /* Extra Light Italic variant of the font */
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Codec Warm Trial';
+    src: url('./fonts/Codec-Warm-Bold-trial.ttf') format('truetype'); /* Bold variant of the font */
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* Add more @font-face rules if there are other variants */
+
+body, * {
+    font-family: 'Codec Warm Trial', sans-serif; /* Apply the font to the entire body and all elements */
+}

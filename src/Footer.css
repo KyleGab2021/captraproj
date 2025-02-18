@@ -1,0 +1,53 @@
+.footer {
+  width: 100%; /* Full width */
+  background-color: #10A54A; /* Pigment Green background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Center align text */
+  padding: 50px 0; /* Padding for spacing */
+  font-family: 'Codec Warm Trial', sans-serif; /* Custom font family */
+}
+
+.footer * {
+  font-family: 'Codec Warm Trial', sans-serif; /* Apply custom font family to all elements */
+}
+
+.footer-content {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Column layout */
+  justify-content: center; /* Center align items */
+  align-items: center; /* Center align items */
+  text-align: center; /* Center align text */
+}
+
+.footer-content p {
+  margin-bottom: 15px; /* Space below text */
+  font-size: larger; /* Larger font size */
+}
+
+.social-media-icons {
+  display: flex; /* Use flexbox for layout */
+  gap: 100px; /* Space between icons */
+  margin: 25px 0; /* Margin for spacing */
+}
+
+.social-media-item {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Column layout */
+  align-items: center; /* Center align items */
+}
+
+.social-icon {
+  font-size: 3em; /* Large icon size */
+  color: #fff; /* White color for icons */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-icon:hover {
+  color: #082D0F; /* Dark Green color on hover */
+}
+
+.social-media-item p {
+  margin-top: 5px; /* Space above text */
+  font-size: 0.9em; /* Smaller font size */
+  color: #fff; /* White text color */
+}

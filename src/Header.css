@@ -1,0 +1,56 @@
+@import url('./fonts.css'); /* Import custom fonts */
+
+.header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the contents */
+  align-items: center; /* Center align items */
+  padding: 40px; /* Increased padding */
+  background-color: #ffffff; /* White background color */
+  font-family: 'Codec Warm Trial', sans-serif; /* Custom font family */
+  position: absolute; /* Absolute positioning */
+  top: 0; /* Align to top */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure the header is on top */
+}
+
+.header * {
+  font-family: 'Codec Warm Trial', sans-serif; /* Apply custom font family to all elements */
+}
+
+.nav {
+  display: flex; /* Use flexbox for layout */
+  gap: 80px; /* Space between navigation items */
+}
+
+.nav ul {
+  list-style: none; /* Remove default list style */
+  display: flex; /* Use flexbox for layout */
+  gap: 200px; /* Space between list items */
+}
+
+.nav a {
+  color: #10A54A; /* Pigment Green text color */
+  font-weight: bold; /* Bold text */
+  font-size: 30px; /* Large font size */
+  text-decoration: none; /* Remove default text decoration */
+}
+
+.nav a:hover {
+  position: relative; /* Relative positioning for hover effect */
+}
+
+.nav a::after {
+  content: ''; /* Empty content for the underline effect */
+  position: absolute; /* Absolute positioning */
+  width: 0; /* Initial width */
+  height: 2px; /* Height of the underline */
+  bottom: -2px; /* Position below the text */
+  left: 50%; /* Center the underline */
+  background-color: #A2CB70; /* Pistachio background color */
+  transition: width 0.5s ease, left 0.5s ease; /* Smooth transition for width and position */
+}
+
+.nav a:hover::after {
+  width: 100%; /* Full width on hover */
+  left: 0; /* Align to left on hover */
+}

@@ -1,0 +1,112 @@
+/* Company About Section -------------------------------------------------------------------- */
+
+.about {
+  padding: 20px; /* Padding around the container */
+  color: #333; /* Dark grey text color */
+  text-align: center; /* Center align text */
+  min-height: 100vh; /* Minimum height of the viewport */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Column layout */
+  justify-content: space-between; /* Space between items */
+}
+
+.company-description {
+  margin: 150px 0px; /* Margin for spacing */
+}
+
+.company-description h1 {
+  font-size: 2.5em; /* Large font size for heading */
+  margin-bottom: 20px; /* Space below heading */
+}
+
+.company-description p {
+  font-size: 1.3em; /* Slightly larger font size */
+  text-align: center; /* Center align text */
+  line-height: 2; /* Line height for readability */
+  text-justify: inter-word; /* Justify text */
+  margin: 0px 100px; /* Margin for spacing */
+}
+
+/* Company Founder Section -------------------------------------------------------------------- */
+
+.team-section {
+  margin-top: 50px; /* Space above the section */
+  background-color: #A2CB70; /* Pistachio background color */
+  border-radius: 0; /* Remove border-radius to cover the entire section */
+  padding: 0px 20px; /* Add padding for spacing */
+  background-repeat: no-repeat; /* No background repeat */
+  background-position: center; /* Center the background */
+}
+
+.team-section h2 {
+  font-size: 2.5em; /* Large font size for heading */
+  margin-bottom: 50px; /* Space below heading */
+}
+
+.team-grid {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
+  gap: 20px; /* Space between grid items */
+}
+
+.team-card {
+  background: white; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px; /* Padding inside the card */
+  text-align: center; /* Center align text */
+}
+
+.photo-placeholder {
+  width: 100%; /* Full width */
+  height: 200px; /* Fixed height */
+  background: #e4e4e4; /* Light grey background */
+  border-radius: 10px; /* Rounded corners */
+  margin-bottom: 10px; /* Space below the image */
+}
+
+.photo-placeholder img {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: cover; /* Cover the entire area */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.caption-placeholder p {
+  margin: 5px 0; /* Margin for spacing */
+  font-weight: bold; /* Bold text */
+  font-size: 1.1em; /* Slightly larger font size */
+}
+
+/* Footer Section -------------------------------------------------------------------- */
+
+.footer {
+  width: 100%; /* Full width */
+  background-color: #333; /* Dark grey background */
+  color: #fff; /* White text color */
+  text-align: center; /* Center align text */
+  padding: 10px 0; /* Padding for spacing */
+  font-family: 'Codec Warm Trial', sans-serif; /* Custom font family */
+}
+
+.footer * {
+  font-family: 'Codec Warm Trial', sans-serif; /* Apply custom font family to all elements */
+}
+
+.footer-content {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center align items */
+  padding: 0 20px; /* Padding for spacing */
+}
+
+.footer-nav ul {
+  list-style: none; /* Remove default list style */
+  display: flex; /* Use flexbox for layout */
+  gap: 15px; /* Space between list items */
+}
+
+.footer-nav a {
+  text-decoration: none; /* Remove default text decoration */
+  color: #fff; /* White text color */
+}

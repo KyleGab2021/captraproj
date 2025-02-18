@@ -1,0 +1,12 @@
+.news-container {
+    padding: 50px; /* Padding around the container */
+    background-color: #f9f9f9; /* Light grey background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.news-container h1 {
+    font-size: 2em; /* Large font size for the heading */
+    color: #333; /* Dark grey color for the heading text */
+    margin-bottom: 20px; /* Space below the heading */
+}
