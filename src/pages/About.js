@@ -82,10 +82,10 @@ function About() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white font-inter">
       {/* Hero Section */}
       <section className="relative h-[50vh] bg-gradient-to-br from-green-600 to-green-900 overflow-hidden">
-        <div className="absolute inset-0 grid-pattern"></div>
+        <div className="absolute inset-0 grid-pattern opacity-20"></div>
         
         <div className="container mx-auto px-6 h-full flex flex-col justify-center items-center relative">
           <h1 className="fade-up text-5xl md:text-7xl font-bold text-white mb-6">
