@@ -297,3 +297,27 @@
   text-decoration: none; /* Remove default text decoration */
   color: #fff; /* White text color */
 }
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-on-scroll.fade-in .bg-green-300 {
+  animation: scaleIn 0.8s ease-out forwards;
+}

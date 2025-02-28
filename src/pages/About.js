@@ -1,26 +1,8 @@
 import React, { useEffect } from 'react';
-import './About.css';
 import haroldImage from '../assets/haroldlaborte.jpg';
 import marianImage from '../assets/mariancelestellanes.jpg';
 
 function About() {
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
-      observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Add default placeholder image
   const defaultImage = "https://placehold.co/400x600/10A54A/ffffff?text=Team+Member";
 
   const teamMembers = [
@@ -86,46 +68,83 @@ function About() {
     },
   ];
 
-  return (
-    <div className="about">
-      <section className="hero-section animate-on-scroll">
-        <h1>About Us</h1>
-        <div className="hero-underline"></div>
-      </section>
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
 
-      <section className="company-description animate-on-scroll">
-        <div className="description-card">
-          <p>Capilli Trading Inc. is a Northern Mindanao-based social enterprise that involves
-             collecting, processing, and trading human waste hair. Capilli strives to create
-             social, economic and environmental value out of human waste hair by establishing
-             systems that utilizes the waste product as a resource that can be traded and
-             transformed into a sustainable by-product for different industries.
-          </p>
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section */}
+      <section className="relative h-[50vh] bg-gradient-to-br from-green-600 to-green-900 overflow-hidden">
+        <div className="absolute inset-0 grid-pattern"></div>
+        
+        <div className="container mx-auto px-6 h-full flex flex-col justify-center items-center relative">
+          <h1 className="fade-up text-5xl md:text-7xl font-bold text-white mb-6">
+            About Us
+          </h1>
+          <div className="fade-up w-32 h-1 bg-green-300 delay-300"></div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+          <svg className="relative w-full h-24" viewBox="0 0 1440 74">
+            <path fill="rgb(249 250 251)" d="M0,32L120,42.7C240,53,480,75,720,74.7C960,75,1200,53,1320,42.7L1440,32L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+          </svg>
         </div>
       </section>
 
-      <section className="team-section">
-        <h2 className="animate-on-scroll">Our Leadership Team</h2>
-        <div className="team-grid">
+      {/* Description Section */}
+      <section className="container mx-auto px-6 py-20">
+        <div className="fade-up max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 hover:shadow-[0_20px_50px_rgba(8,45,15,0.1)] transition-shadow duration-500">
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+              Capilli Trading Inc. is a Northern Mindanao-based social enterprise that involves
+              collecting, processing, and trading human waste hair. Capilli strives to create
+              social, economic and environmental value out of human waste hair by establishing
+              systems that utilizes the waste product as a resource that can be traded and
+              transformed into a sustainable by-product for different industries.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="container mx-auto px-6 py-20">
+        <h2 className="fade-up text-4xl md:text-5xl font-bold text-green-900 text-center mb-16">
+          Our Leadership Team
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {teamMembers.map((member, index) => (
-            <div 
-              className="team-card animate-on-scroll" 
+            <div
               key={index}
-              style={{ animationDelay: `${member.delay}ms` }}
+              className="fade-up group"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="card-content">
-                <div className="photo-container">
+              <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="relative aspect-[4/5] overflow-hidden">
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    onError={(e) => {
-                      e.target.src = defaultImage;
-                    }}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    onError={(e) => { e.target.src = defaultImage }}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                <div className="member-info">
-                  <h3>{member.name}</h3>
-                  <p>{member.position}</p>
+                <div className="p-6 md:p-8">
+                  <h3 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-green-600 to-green-900 bg-clip-text text-transparent">
+                    {member.name}
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    {member.position}
+                  </p>
                 </div>
               </div>
             </div>

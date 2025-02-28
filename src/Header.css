@@ -2,7 +2,7 @@
   display: flex; /* Use flexbox for layout */
   justify-content: center; /* Center the contents */
   align-items: center; /* Center align items */
-  padding: 40px; /* Increased padding */
+  padding: 20px; /* Increased padding */
   background-color: #ffffff; /* White background color */
   font-family: 'Inter', 'Roboto', sans-serif; /* Custom font family */
   position: absolute; /* Absolute positioning */
@@ -29,7 +29,7 @@
 .nav a {
   color: #10A54A; /* Pigment Green text color */
   font-weight: bold; /* Bold text */
-  font-size: 30px; /* Large font size */
+  font-size: 20px; /* Large font size */
   text-decoration: none; /* Remove default text decoration */
 }
 
