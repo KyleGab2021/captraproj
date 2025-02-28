@@ -1,25 +1,47 @@
-import React from 'react'; // Importing the React library
-import './News.css'; // Importing the CSS file for styling
+import React from 'react';
+import './News.css';
 
 function News() {
-	return (
-		<div className="news-container"> {/* Container for the entire News page */}
-			<section className="news-description"> {/* Section for the News page description */}
-				<h1>News</h1> {/* Heading for the News page */}
-			</section>
-			<section className="news-section"> {/* Section for the News content */}
-				<section className="news-grid"> {/* Grid layout for news items */}
-					<section className="news-card"> {/* Individual news card */}
-						<img src="https://via.placeholder.com/300" alt="News Image" className="news-image" /> {/* Placeholder image for the news */}
-						<div className="news-caption"> {/* Container for the news caption */}
-							<h2>News Title</h2> {/* Title of the news */}
-							<p>News Description</p> {/* Description of the news */}
-						</div>
-					</section>
-				</section>
-			</section>
-		</div>
-	);
+  return (
+    <div className="news-container">
+      <div className="news-hero">
+        <h1>Latest News</h1>
+        <p>Stay updated with Capilli Trading's latest developments and initiatives</p>
+      </div>
+      
+      <div className="news-grid">
+        <article className="news-card">
+          <div className="news-image-container">
+            <img src="https://picsum.photos/800/600" alt="News Sample" className="news-image" />
+            <div className="news-date">June 15, 2023</div>
+          </div>
+          <div className="news-content">
+            <h2>Capilli Trading Launches New Environmental Initiative</h2>
+            <p className="news-excerpt">
+              Our company has launched a groundbreaking initiative to promote sustainable practices
+              in the hair trading industry, focusing on waste reduction and community development.
+            </p>
+            <button className="read-more-btn">Read More</button>
+          </div>
+        </article>
+
+        <article className="news-card">
+          <div className="news-image-container">
+            <img src="https://picsum.photos/800/600?random=2" alt="News Sample" className="news-image" />
+            <div className="news-date">June 10, 2023</div>
+          </div>
+          <div className="news-content">
+            <h2>Partnership with Local Communities</h2>
+            <p className="news-excerpt">
+              Capilli Trading establishes new partnerships with local communities to create
+              sustainable economic opportunities through hair trading.
+            </p>
+            <button className="read-more-btn">Read More</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  );
 }
 
-export default News; // Exporting the News component as the default export
+export default News;

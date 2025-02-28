@@ -1,12 +1,116 @@
 .news-container {
-    padding: 50px; /* Padding around the container */
-    background-color: #f9f9f9; /* Light grey background color */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px 5%;
+  background-color: #ffffff;
+  min-height: 100vh;
 }
 
-.news-container h1 {
-    font-size: 2em; /* Large font size for the heading */
-    color: #333; /* Dark grey color for the heading text */
-    margin-bottom: 20px; /* Space below the heading */
+.news-hero {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 60px 20px;
+  background: linear-gradient(to right, #10A54A, #082D0F);
+  color: white;
+  border-radius: 15px;
+}
+
+.news-hero h1 {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+.news-hero p {
+  font-size: 1.2em;
+  opacity: 0.9;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 20px;
+}
+
+.news-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+}
+
+.news-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.news-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image {
+  transform: scale(1.05);
+}
+
+.news-date {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(16, 165, 74, 0.9);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9em;
+}
+
+.news-content {
+  padding: 25px;
+}
+
+.news-content h2 {
+  color: #082D0F;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.news-excerpt {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.read-more-btn {
+  background: #10A54A;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.read-more-btn:hover {
+  background: #082D0F;
+}
+
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .news-hero {
+    padding: 40px 20px;
+  }
+  
+  .news-hero h1 {
+    font-size: 2em;
+  }
 }

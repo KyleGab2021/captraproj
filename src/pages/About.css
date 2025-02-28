@@ -8,10 +8,58 @@
   display: flex; /* Use flexbox for layout */
   flex-direction: column; /* Column layout */
   justify-content: space-between; /* Space between items */
+  background: #f8f9fa;
+  overflow-x: hidden;
+}
+
+.hero-section {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #10A54A, #082D0F);
+  color: white;
+  position: relative;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: #f8f9fa;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.hero-section h1 {
+  font-size: 4.5em;
+  margin: 0;
+  font-weight: 800;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-underline {
+  width: 150px;
+  height: 6px;
+  background: #A2CB70;
+  margin: 0 auto;
+  transform: scaleX(0);
+  transition: transform 0.8s ease;
 }
 
 .company-description {
-  margin: 150px 0px; /* Margin for spacing */
+  margin: 80px auto; /* Margin for spacing */
+  padding: 0 20px;
+  max-width: 1200px;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .company-description h1 {
@@ -27,26 +75,53 @@
   margin: 0px 100px; /* Margin for spacing */
 }
 
+.description-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.description-card p {
+  font-size: 1.4em;
+  line-height: 1.8;
+  color: #444;
+  margin: 0;
+  text-align: justify;
+}
+
 /* Company Founder Section -------------------------------------------------------------------- */
 
 .team-section {
   margin-top: 50px; /* Space above the section */
-  background-color: #A2CB70; /* Pistachio background color */
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
   border-radius: 0; /* Remove border-radius to cover the entire section */
-  padding: 0px 20px; /* Add padding for spacing */
+  padding: 100px 20px; /* Add padding for spacing */
   background-repeat: no-repeat; /* No background repeat */
   background-position: center; /* Center the background */
+  position: relative;
 }
 
 .team-section h2 {
-  font-size: 2.5em; /* Large font size for heading */
-  margin-bottom: 50px; /* Space below heading */
+  font-size: 3em; /* Large font size for heading */
+  margin-bottom: 80px; /* Space below heading */
+  text-align: center;
+  color: #082D0F;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .team-grid {
   display: grid; /* Use grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
-  gap: 20px; /* Space between grid items */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid columns */
+  gap: 50px; /* Space between grid items */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .team-card {
@@ -55,6 +130,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   padding: 20px; /* Padding inside the card */
   text-align: center; /* Center align text */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .photo-placeholder {
@@ -76,6 +153,110 @@
   margin: 5px 0; /* Margin for spacing */
   font-weight: bold; /* Bold text */
   font-size: 1.1em; /* Slightly larger font size */
+}
+
+.card-content {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.card-content:hover {
+  transform: translateY(-15px) rotate3d(1, 1, 0, 2deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.photo-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.card-content:hover .photo-container img {
+  transform: scale(1.05);
+}
+
+.member-info {
+  padding: 30px;
+  background: white;
+  position: relative;
+  text-align: center;
+}
+
+.member-info h3 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #082D0F;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #10A54A, #082D0F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.member-info p {
+  margin: 10px 0 0;
+  color: #666;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+/* Animation classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in .hero-underline {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 3em;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .description-card {
+    padding: 30px;
+  }
+  
+  .description-card p {
+    font-size: 1.2em;
+  }
+  
+  .photo-container {
+    height: 300px;
+  }
 }
 
 /* Footer Section -------------------------------------------------------------------- */

@@ -1,91 +1,80 @@
-import React from 'react'; // Importing the React library
-import './About.css'; // Importing the CSS file for styling
-import haroldImage from '../assets/haroldlaborte.jpg'; // Importing the founder image
-import marianImage from '../assets/mariancelestellanes.jpg'; // Importing the image for Marian Celeste Llanes
+import React, { useEffect } from 'react';
+import './About.css';
+import haroldImage from '../assets/haroldlaborte.jpg';
+import marianImage from '../assets/mariancelestellanes.jpg';
 
 function About() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="about">
-      <section className="company-description">
-        <h1>ABOUT US</h1> {/* Heading for the About Us section */}
-        <p>Capilli Trading Inc. is a Northern Mindanao-based social enterprise that involves
-           collecting, processing, and trading human waste hair. Capilli strives to create
-           social, economic and environmental value out of human waste hair by establishing
-           systems that utilizes the waste product as a resource that can be traded and
-           transformed into a sustainable by-product for different industries.
-        </p>
+      <section className="hero-section animate-on-scroll">
+        <h1>About Us</h1>
+        <div className="hero-underline"></div>
       </section>
+
+      <section className="company-description animate-on-scroll">
+        <div className="description-card">
+          <p>Capilli Trading Inc. is a Northern Mindanao-based social enterprise that involves
+             collecting, processing, and trading human waste hair. Capilli strives to create
+             social, economic and environmental value out of human waste hair by establishing
+             systems that utilizes the waste product as a resource that can be traded and
+             transformed into a sustainable by-product for different industries.
+          </p>
+        </div>
+      </section>
+
       <section className="team-section">
-        <h2>MEET THE TEAM BEHIND CAPILLI INC.</h2> {/* Heading for the team section */}
+        <h2 className="animate-on-scroll">Our Leadership Team</h2>
         <div className="team-grid">
-          <div className="team-card">
-            <div className="photo-placeholder">
-              <img src={haroldImage} alt="Harold John Laborte" /> {/* Image of Harold John Laborte */}
+          {[
+            {
+              image: haroldImage,
+              name: "Harold Laborte",
+              position: "Founder & CEO",
+              delay: 0
+            },
+            {
+              image: marianImage,
+              name: "Marian Celeste Llanes",
+              position: "Vice President for Marketing",
+              delay: 200
+            }
+          ].map((member, index) => (
+            <div 
+              className="team-card animate-on-scroll" 
+              key={index}
+              style={{ animationDelay: `${member.delay}ms` }}
+            >
+              <div className="card-content">
+                <div className="photo-container">
+                  <img src={member.image} alt={member.name} />
+                </div>
+                <div className="member-info">
+                  <h3>{member.name}</h3>
+                  <p>{member.position}</p>
+                </div>
+              </div>
             </div>
-            <div className="caption-placeholder">
-              <p>Harold Laborte</p> {/* Name of Harold John Laborte */}
-              <p>Founder & CEO</p> {/* Position of Harold John Laborte */}
-            </div>
-          </div>
-          <div className="team-card">
-            <div className="photo-placeholder">
-              <img src={marianImage} alt="Marian Celeste Llanes" /> {/* Image of Marian Celeste Llanes */}
-            </div>
-            <div className="caption-placeholder">
-              <p>Marian Celeste Llanes</p> {/* Name of Marian Celeste Llanes */}
-              <p>Vice President for Marketing</p> {/* Position of Marian Celeste Llanes */}
-            </div>
-          </div>
-          <div className="team-card">
-            <div className="photo-placeholder">
-              <img src="" alt="Team Member Photo" /> {/* Placeholder for team member photo */}
-            </div>
-            <div className="caption-placeholder">
-              <p>Team Member Name</p> {/* Placeholder for team member name */}
-              <p>Team Member Position</p> {/* Placeholder for team member position */}
-            </div>
-          </div>
-          <div className="team-card">
-            <div className="photo-placeholder">
-              <img src="" alt="Team Member Photo" /> {/* Placeholder for team member photo */}
-            </div>
-            <div className="caption-placeholder">
-              <p>Team Member Name</p> {/* Placeholder for team member name */}
-              <p>Team Member Position</p> {/* Placeholder for team member position */}
-            </div>
-          </div>
-          <div className="team-card">
-            <div className="photo-placeholder">
-              <img src="" alt="Team Member Photo" /> {/* Placeholder for team member photo */}
-            </div>
-            <div className="caption-placeholder">
-              <p>Team Member Name</p> {/* Placeholder for team member name */}
-              <p>Team Member Position</p> {/* Placeholder for team member position */}
-            </div>
-          </div>
-          <div className="team-card">
-            <div className="photo-placeholder">
-              <img src="" alt="Team Member Photo" /> {/* Placeholder for team member photo */}
-            </div>
-            <div className="caption-placeholder">
-              <p>Team Member Name</p> {/* Placeholder for team member name */}
-              <p>Team Member Position</p> {/* Placeholder for team member position */}
-            </div>
-          </div>
-          <div className="team-card">
-            <div className="photo-placeholder">
-              <img src="" alt="Team Member Photo" /> {/* Placeholder for team member photo */}
-            </div>
-            <div className="caption-placeholder">
-              <p>Team Member Name</p> {/* Placeholder for team member name */}
-              <p>Team Member Position</p> {/* Placeholder for team member position */}
-            </div>
-          </div>
-          {/* Add more team cards as needed */}
+          ))}
         </div>
       </section>
     </div>
   );
 }
 
-export default About; // Exporting the About component as the default export
+export default About;

@@ -2,6 +2,7 @@
   color: white; /* Set text color to white */
   text-align: center; /* Center align text */
   position: relative; /* Position relative for further positioning */
+  overflow-x: hidden;
 }
 
 .background-overlay {
@@ -15,6 +16,8 @@
   flex-direction: column; /* Column layout */
   justify-content: center; /* Center content vertically */
   align-items: center; /* Center content horizontally */
+  position: relative;
+  background-attachment: fixed;
 }
 
 .home h1 {
@@ -26,6 +29,19 @@
   border-radius: 5px; /* Rounded corners */
   font-size: 1.2em; /* Slightly larger font size */
   gap: 0px; /* No gap between elements */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideIn 1s forwards;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.3s;
 }
 
 .section {
@@ -37,6 +53,14 @@
 .section-products {
   background-color: #f4f4f4; /* Light grey background */
   color: #333; /* Dark grey text color */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-products.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .product-grid {
@@ -44,6 +68,7 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
   gap: 50px; /* Space between grid items */
   margin-top: 20px; /* Space above the grid */
+  perspective: 1000px;
 }
 
 .product-card {
@@ -52,6 +77,18 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   padding: 30px; /* Padding inside the card */
   text-align: center; /* Center align text */
+  transform: rotateX(10deg);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.active .product-card {
+  transform: rotateX(0);
+  opacity: 1;
+}
+
+.product-card:nth-child(2) {
+  transition-delay: 0.2s;
 }
 
 .product-image-placeholder {
@@ -62,12 +99,22 @@
   margin-bottom: 10px; /* Space below the image */
 }
 
+.product-image-wrapper {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
 .product-image {
   width: 100%; /* Full width */
   height: 350px; /* Fixed height */
   object-fit: cover; /* Cover the entire area */
   border-radius: 50px; /* Rounded corners */
   margin-bottom: 10px; /* Space below the image */
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
 }
 
 .product-caption-placeholder {
@@ -84,6 +131,19 @@
   flex-direction: column; /* Column layout */
   align-items: center; /* Center align items */
   padding: 50px 20px; /* Padding for spacing */
+  min-height: 600px; /* Increase the minimum height */
+  position: relative;
+  overflow: hidden;
+}
+
+.section-advocacy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
 }
 
 .advocacy-heading {
@@ -94,27 +154,39 @@
 }
 
 .advocacy-container {
-  display: flex; /* Use flexbox for layout */
-  justify-content: space-between; /* Space between items */
-  align-items: center; /* Center align items */
-  width: 100%; /* Full width */
-  max-width: 1200px; /* Maximum width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px; /* Increased gap between elements */
+  width: 100%;
+  max-width: 1400px; /* Increased max-width */
+  margin: 0 auto;
+  padding: 40px 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active .advocacy-container {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .advocacy-left {
-  flex: 1; /* Take up equal space */
-  padding-right: 20px; /* Space to the right */
-  background: #fff; /* White background */
-  padding: 20px; /* Padding inside the container */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  flex: 1;
+  max-width: 600px; /* Increased max-width */
+  background: #fff;
+  padding: 40px; /* Increased padding */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .advocacy-right {
-  flex: 1; /* Take up equal space */
-  display: flex; /* Use flexbox for layout */
-  justify-content: center; /* Center align items */
-  align-items: center; /* Center align items */
+  flex: 1;
+  max-width: 600px; /* Increased max-width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .advocacy-form {
@@ -231,12 +303,24 @@
 }
 
 .advocacy-image-placeholder {
-  width: 100%; /* Full width */
-  max-width: 500px; /* Maximum width */
-  height: 300px; /* Fixed height */
-  background-color: #e4e4e4; /* Light grey background */
-  border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 100%;
+  max-width: 600px; /* Increased max-width */
+  height: 400px; /* Increased height */
+  background-color: #e4e4e4;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.advocacy-image-wrapper {
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform 0.6s ease;
+}
+
+.advocacy-image-wrapper:hover {
+  transform: perspective(1000px) rotateY(0);
 }
 
 /* Contact Us Section -------------------------------------------------------------------- */
@@ -245,6 +329,7 @@
   background: linear-gradient(var(--gradient-direction, to top), #082d0fcb, #000000ad), url('../assets/capillicontactbg.jpg') no-repeat center center; /* Set the background image */
   background-size: cover; /* Ensure the image covers the entire section */
   color: #333; /* Dark grey text color */
+  position: relative;
 }
 
 .contact-us-container {
@@ -278,6 +363,15 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   width: 100%; /* Full width */
   max-width: 500px; /* Maximum width */
+  backdrop-filter: blur(10px);
+  transform: translateX(50px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active .contact-form {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .contact-form h3 {
@@ -377,5 +471,35 @@
   100% {
     opacity: 1; /* End with 1 opacity */
     transform: translateY(0); /* End with 0 translateY */
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .advocacy-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .advocacy-image-wrapper {
+    transform: none;
   }
 }
