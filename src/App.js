@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import News from './pages/News';
 import Footer from './Footer';
+import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 
 function App() {
   return (

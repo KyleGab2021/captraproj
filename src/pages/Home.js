@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Home.css';
 // Keep all your existing imports
 import hairMatImage from '../assets/capilliproducthairmat.jpg';
@@ -24,26 +24,22 @@ function Home() {
   const [isIntersecting, setIsIntersecting] = useState({});
   const [isHovering, setIsHovering] = useState(false);
   const carouselRef = useRef(null);
-  
+
+  const handleIntersection = useCallback((entries) => {
+    entries.forEach((entry) => {
+      setIsIntersecting(prev => ({
+        ...prev,
+        [entry.target.dataset.section]: entry.isIntersecting
+      }));
+    });
+  }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsIntersecting(prev => ({
-            ...prev,
-            [entry.target.dataset.section]: entry.isIntersecting
-          }));
-        });
-      },
-      { threshold: 0.2 }
-    );
-
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.2 });
     const sections = document.querySelectorAll('[data-section]');
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
-  }, []);
+  }, [handleIntersection]);
 
   // All your existing code remains the same
   const sponsorLogos = [
@@ -70,7 +66,11 @@ function Home() {
       <section className="relative h-screen bg-gradient-to-b from-green-900 to-black flex flex-col justify-center items-center px-4">
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <img src={logoImage} alt="Capilli Trading Logo" className="max-h-32 mx-auto mb-8 float-animation" />
+          <img 
+            src={logoImage} 
+            alt="Capilli Trading Logo" 
+            className="max-h-48 md:max-h-56 lg:max-h-64 mx-auto mb-8 float-animation" // Updated size here
+          />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Welcome to Capilli Trading
           </h1>
@@ -219,36 +219,36 @@ function Home() {
 
               {/* Impact Stats Card */}
               <div className="bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-xl shadow-xl overflow-hidden">
-                <div className="p-10">
-                  <h4 className="text-xl font-bold text-gray-800 mb-7 flex items-center">
-                    <svg className="w-6 h-6 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <div className="p-12">
+                  <h4 className="text-xl font-bold text-gray-800 mb-8 flex items-center">
+                    <svg className="w-6 h-6 text-green-600 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                       <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                     </svg>
                     Our Environmental Impact
                   </h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="text-center p-3 bg-green-50 rounded-lg">
-                      <span className="block text-3xl font-bold text-green-700">48%</span>
-                      <span className="text-sm text-gray-500">Waste Reduction</span>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
+                      <span className="block text-4xl font-bold text-green-700 mb-2">48%</span>
+                      <span className="text-sm text-gray-600 font-medium">Waste Reduction</span>
                     </div>
-                    <div className="text-center p-3 bg-green-50 rounded-lg">
-                      <span className="block text-3xl font-bold text-green-700">1.2K</span>
-                      <span className="text-sm text-gray-500">Kg Hair Recycled</span>
+                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
+                      <span className="block text-4xl font-bold text-green-700 mb-2">1.2K</span>
+                      <span className="text-sm text-gray-600 font-medium">Kg Hair Recycled</span>
                     </div>
-                    <div className="text-center p-3 bg-green-50 rounded-lg">
-                      <span className="block text-3xl font-bold text-green-700">15+</span>
-                      <span className="text-sm text-gray-500">Communities</span>
+                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
+                      <span className="block text-4xl font-bold text-green-700 mb-2">15+</span>
+                      <span className="text-sm text-gray-600 font-medium">Communities</span>
                     </div>
-                    <div className="text-center p-3 bg-green-50 rounded-lg">
-                      <span className="block text-3xl font-bold text-green-700">3K</span>
-                      <span className="text-sm text-gray-500">CO₂ Reduction</span>
+                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
+                      <span className="block text-4xl font-bold text-green-700 mb-2">3K</span>
+                      <span className="text-sm text-gray-600 font-medium">CO₂ Reduction</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
             {/* Right column - Advocacy image and values */}
             <div className={`lg:w-1/2 transition-all duration-700 ${isIntersecting['advocacy'] ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
               <div className="relative h-full">

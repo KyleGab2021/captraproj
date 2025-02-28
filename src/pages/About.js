@@ -1,6 +1,15 @@
 import React, { useEffect } from 'react';
 import haroldImage from '../assets/haroldlaborte.jpg';
 import marianImage from '../assets/mariancelestellanes.jpg';
+import zueinImage from '../assets/zuein_guantero.jpg';
+import krisImage from '../assets/kris_vasallo.jpg';
+import phoebeImage from '../assets/phoebe_pahunang.jpg';
+// import reinnaImage from '../assets/reinna_calo.jpg';
+// import arsenioImage from '../assets/arsenio_menesis.jpg';
+// import jessyImage from '../assets/jessy_decastro.jpg';
+import rhoieImage from '../assets/rhoie_omlero-mendez.jpg';
+// import sittieImage from '../assets/sittie-zaima.jpg';
+
 
 function About() {
   const defaultImage = "https://placehold.co/400x600/10A54A/ffffff?text=Team+Member";
@@ -19,19 +28,19 @@ function About() {
       delay: 200
     },
     {
-      image: defaultImage,
+      image: zueinImage,
       name: "Zuein Guantero",
-      position: "Co-founder & COO & President",
+      position: "Co-founder President & Chief Operating Officer",
       delay: 400
     },
     {
-      image: defaultImage,
+      image: krisImage,
       name: "Kris Vasallo",
       position: "Board of Directors Chair and Research Consultant",
       delay: 600
     },
     {
-      image: defaultImage,
+      image: phoebeImage,
       name: "Phoebe Pahunang",
       position: "Chief Financial Officer",
       delay: 800
@@ -55,14 +64,14 @@ function About() {
       delay: 1400
     },
     {
-      image: defaultImage,
-      name: "Rhoie Jhannarie Omlero",
+      image: rhoieImage,
+      name: "Rhoie Jhannarie Omlero-Mendez",
       position: "People and Culture Manager",
       delay: 1600
     },
     {
       image: defaultImage,
-      name: "Sittie Zaima ",
+      name: "Sittie Zaima",
       position: "Marketing Intern",
       delay: 1800
     },
