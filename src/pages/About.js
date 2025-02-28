@@ -20,6 +20,72 @@ function About() {
     return () => observer.disconnect();
   }, []);
 
+  // Add default placeholder image
+  const defaultImage = "https://placehold.co/400x600/10A54A/ffffff?text=Team+Member";
+
+  const teamMembers = [
+    {
+      image: haroldImage,
+      name: "Harold John Laborte",
+      position: "Founder & CEO",
+      delay: 0
+    },
+    {
+      image: marianImage,
+      name: "Marian Celeste Llanes",
+      position: "Vice President for Marketing",
+      delay: 200
+    },
+    {
+      image: defaultImage,
+      name: "Zuein Guantero",
+      position: "Co-founder & COO & President",
+      delay: 400
+    },
+    {
+      image: defaultImage,
+      name: "Kris Vasallo",
+      position: "Board of Directors Chair and Research Consultant",
+      delay: 600
+    },
+    {
+      image: defaultImage,
+      name: "Phoebe Pahunang",
+      position: "Chief Financial Officer",
+      delay: 800
+    },
+    {
+      image: defaultImage,
+      name: "Reinna Calo",
+      position: "Co-Founder and Chief Product Officer",
+      delay: 1000
+    },
+    {
+      image: defaultImage,
+      name: "Arsenio Meneses",
+      position: "Vice President for Marketing",
+      delay: 1200
+    },
+    {
+      image: defaultImage,
+      name: "Jessy de Castro",
+      position: "Management Intern",
+      delay: 1400
+    },
+    {
+      image: defaultImage,
+      name: "Rhoie Jhannarie Omlero",
+      position: "People and Culture Manager",
+      delay: 1600
+    },
+    {
+      image: defaultImage,
+      name: "Sittie Zaima ",
+      position: "Marketing Intern",
+      delay: 1800
+    },
+  ];
+
   return (
     <div className="about">
       <section className="hero-section animate-on-scroll">
@@ -41,20 +107,7 @@ function About() {
       <section className="team-section">
         <h2 className="animate-on-scroll">Our Leadership Team</h2>
         <div className="team-grid">
-          {[
-            {
-              image: haroldImage,
-              name: "Harold Laborte",
-              position: "Founder & CEO",
-              delay: 0
-            },
-            {
-              image: marianImage,
-              name: "Marian Celeste Llanes",
-              position: "Vice President for Marketing",
-              delay: 200
-            }
-          ].map((member, index) => (
+          {teamMembers.map((member, index) => (
             <div 
               className="team-card animate-on-scroll" 
               key={index}
@@ -62,7 +115,13 @@ function About() {
             >
               <div className="card-content">
                 <div className="photo-container">
-                  <img src={member.image} alt={member.name} />
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    onError={(e) => {
+                      e.target.src = defaultImage;
+                    }}
+                  />
                 </div>
                 <div className="member-info">
                   <h3>{member.name}</h3>

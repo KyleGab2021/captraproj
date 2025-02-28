@@ -97,12 +97,15 @@
 /* Company Founder Section -------------------------------------------------------------------- */
 
 .team-section {
-  margin-top: 50px; /* Space above the section */
-  background: linear-gradient(135deg, #ffffff, #f0f0f0);
-  border-radius: 0; /* Remove border-radius to cover the entire section */
-  padding: 100px 20px; /* Add padding for spacing */
-  background-repeat: no-repeat; /* No background repeat */
-  background-position: center; /* Center the background */
+  margin-top: 50px;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+              url('../assets/capilliaboutpagebg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border-radius: 0;
+  padding: 100px 20px;
   position: relative;
 }
 
@@ -173,6 +176,7 @@
   height: 400px;
   overflow: hidden;
   position: relative;
+  background: linear-gradient(135deg, #10A54A20, #082D0F20); /* Subtle gradient background */
 }
 
 .photo-container img {
@@ -180,6 +184,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  background-color: #f0f0f0; /* Fallback background color */
 }
 
 .photo-container::after {
@@ -209,6 +214,7 @@
   color: #082D0F;
   margin-bottom: 10px;
   background: linear-gradient(135deg, #10A54A, #082D0F);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
