@@ -1,134 +1,54 @@
-@import url('./fonts.css'); /* Import custom fonts */
-
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 20px 40px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0);
-}
-
-.header.scrolled {
-    padding: 15px 40px;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the contents */
+  align-items: center; /* Center align items */
+  padding: 40px; /* Increased padding */
+  background-color: #ffffff; /* White background color */
+  font-family: 'Inter', 'Roboto', sans-serif; /* Custom font family */
+  position: absolute; /* Absolute positioning */
+  top: 0; /* Align to top */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure the header is on top */
 }
 
 .header * {
-  font-family: 'Codec Warm Trial', sans-serif; /* Apply custom font family to all elements */
+  font-family: 'Inter', 'Roboto', sans-serif; /* Apply custom font family to all elements */
 }
 
 .nav {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 1200px;
+  display: flex; /* Use flexbox for layout */
+  gap: 80px; /* Space between navigation items */
 }
 
 .nav ul {
-    list-style: none;
-    display: flex;
-    gap: 60px;
-    margin: 0;
-    padding: 0;
+  list-style: none; /* Remove default list style */
+  display: flex; /* Use flexbox for layout */
+  gap: 200px; /* Space between list items */
 }
 
-.nav-link {
-    color: #10A54A;
-    font-size: 1.2em;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 8px 16px;
-    position: relative;
-    transition: color 0.3s ease;
-    animation: fadeInDown 0.5s ease forwards;
-    opacity: 0;
-    transform: translateY(-20px);
+.nav a {
+  color: #10A54A; /* Pigment Green text color */
+  font-weight: bold; /* Bold text */
+  font-size: 30px; /* Large font size */
+  text-decoration: none; /* Remove default text decoration */
 }
 
-.nav-link:hover {
-    color: #082D0F;
+.nav a:hover {
+  position: relative; /* Relative positioning for hover effect */
 }
 
-.link-underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #A2CB70;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-    transform-origin: right;
+.nav a::after {
+  content: ''; /* Empty content for the underline effect */
+  position: absolute; /* Absolute positioning */
+  width: 0; /* Initial width */
+  height: 2px; /* Height of the underline */
+  bottom: -2px; /* Position below the text */
+  left: 50%; /* Center the underline */
+  background-color: #A2CB70; /* Pistachio background color */
+  transition: width 0.5s ease, left 0.5s ease; /* Smooth transition for width and position */
 }
 
-.nav-link:hover .link-underline {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-.nav-link.active {
-    color: #082D0F;
-}
-
-.nav-link.active .link-underline {
-    transform: scaleX(1);
-    background: #10A54A;
-}
-
-@keyframes fadeInDown {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Glass effect on scroll */
-.scrolled .nav-link {
-    padding: 6px 16px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header {
-        padding: 15px 20px;
-    }
-
-    .nav ul {
-        gap: 30px;
-    }
-
-    .nav-link {
-        font-size: 1em;
-        padding: 6px 12px;
-    }
-}
-
-/* Hover effect enhancement */
-.nav-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(162, 203, 112, 0.1);
-    border-radius: 4px;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-    z-index: -1;
-}
-
-.nav-link:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
+.nav a:hover::after {
+  width: 100%; /* Full width on hover */
+  left: 0; /* Align to left on hover */
 }

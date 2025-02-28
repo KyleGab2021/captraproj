@@ -4,6 +4,20 @@ import hairMatImage from '../assets/capilliproducthairmat.jpg';
 import hairRugImage from '../assets/capilliproducthairrug.jpg';
 import logoImage from '../assets/capillitradinglogotext.png';
 import advocacyImage from '../assets/capilliadvocacyimg1.jpg';
+import ateneoBluenest from '../assets/ateneobluenest_sponsorlogo.png';
+import automobilico from '../assets/automobilico_sponsorlogo.png';
+import eccp from '../assets/eccp_sponsorlogo.png';
+import fibers from '../assets/fibers_sponsorlogo.png';
+import ideya from '../assets/ideya_sponsorlogo.png';
+import matterOfTrust from '../assets/matteroftrust_sponsorlogo.png';
+import motolite from '../assets/motolite_sponsorlogo.png';
+import plantbox from '../assets/plantbox_sponsorlogo.png';
+import proyektoPilipinas from '../assets/proyektopilipinas_sponsorlogo.png';
+import rayzorBarbershop from '../assets/rayzorbarbershop_sponsorlogo.png';
+import sanRoqueHpp from '../assets/sanroquehpp_sponsorlogo.png';
+import socialImpactOracle from '../assets/socialimpactoraclesuite_sponsorlogo.png';
+import spiPower from '../assets/spipower_sponsorlogo.png';
+import wtGardens from '../assets/wtgardens_sponsorlogo.png';
 
 function Home() {
   const [isIntersecting, setIsIntersecting] = useState({});
@@ -26,6 +40,23 @@ function Home() {
 
     return () => observer.disconnect();
   }, []);
+
+  const sponsorLogos = [
+    { src: ateneoBluenest, alt: 'Ateneo Blue Nest' },
+    { src: automobilico, alt: 'Automobilico' },
+    { src: eccp, alt: 'ECCP' },
+    { src: fibers, alt: 'Fibers' },
+    { src: ideya, alt: 'Ideya' },
+    { src: matterOfTrust, alt: 'Matter of Trust' },
+    { src: motolite, alt: 'Motolite' },
+    { src: plantbox, alt: 'Plantbox' },
+    { src: proyektoPilipinas, alt: 'Proyekto Pilipinas' },
+    { src: rayzorBarbershop, alt: 'Rayzor Barbershop' },
+    { src: sanRoqueHpp, alt: 'San Roque HPP' },
+    { src: socialImpactOracle, alt: 'Social Impact Oracle Suite' },
+    { src: spiPower, alt: 'SPI Power' },
+    { src: wtGardens, alt: 'WT Gardens' }
+  ];
 
   return (
     <div className="home">
@@ -61,7 +92,7 @@ function Home() {
         className={`section section-advocacy ${isIntersecting['advocacy'] ? 'active' : ''}`}
         data-section="advocacy"
       >
-        <h2 className="advocacy-heading">Our Advocacy</h2>
+        <h2 className="advocacy-heading">ADVOCACY</h2>
         <div className="advocacy-container">
           <div className="advocacy-left">
             <div className="advocacy-content">
@@ -77,6 +108,30 @@ function Home() {
             <div className="advocacy-image-wrapper">
               <img src={advocacyImage} alt="Advocacy" className="advocacy-image" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section 
+        className={`section section-sponsors ${isIntersecting['sponsors'] ? 'active' : ''}`}
+        data-section="sponsors"
+      >
+        <h2 className="section-title">Our Partners</h2>
+        <div className="sponsors-container">
+          <div className="sponsors-track">
+            {/* Repeat twice for seamless loop */}
+            {[1, 2].map((set) => (
+              <div key={set} className="sponsors-group">
+                {sponsorLogos.map((logo, index) => (
+                  <img 
+                    key={`${set}-${index}`}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="sponsor-logo"
+                  />
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>

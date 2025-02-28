@@ -426,6 +426,112 @@
   background-color: #082D0F; /* Dark green background on hover */
 }
 
+/* Sponsors Section */
+.section-sponsors {
+  background: #f8f9fa;
+  padding: 100px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-sponsors::before,
+.section-sponsors::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.section-sponsors::before {
+  left: 0;
+  background: linear-gradient(to right, #f8f9fa, transparent);
+}
+
+.section-sponsors::after {
+  right: 0;
+  background: linear-gradient(to left, #f8f9fa, transparent);
+}
+
+.section-sponsors .section-title {
+  color: #082D0F;
+  font-size: 2.5em;
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.section-sponsors.active .section-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sponsors-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0.5px 0;
+}
+
+.sponsors-track {
+  display: flex;
+  animation: scroll 40s linear infinite;
+  gap: 40px;
+}
+
+.sponsors-group {
+  display: flex;
+  gap: 100px;  /* Increased gap between logos */
+  padding: 0 50px;  /* Increased padding */
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.sponsor-logo {
+  height: 120px;  /* Increased from 60px */
+  width: auto;
+  max-width: 220px;  /* Increased from 180px */
+  object-fit: contain;
+  opacity: 0.85;  /* Slightly more visible in normal state */
+  transition: all 0.3s ease;
+  filter: none;  /* Remove grayscale filter */
+}
+
+.sponsor-logo:hover {
+  opacity: 1;
+  transform: scale(1.15);  /* Slightly larger scale on hover */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));  /* Add subtle shadow on hover */
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);  /* Changed from calc(-100% - 40px) to -50% */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sponsors-group {
+    gap: 40px;  /* Adjusted gap for mobile */
+  }
+  
+  .sponsor-logo {
+    height: 70px;  /* Slightly larger than before on mobile */
+    max-width: 180px;
+  }
+  
+  .section-sponsors::before,
+  .section-sponsors::after {
+    width: 100px;
+  }
+}
+
 /* Footer Section -------------------------------------------------------------------- */
 
 .footer {
