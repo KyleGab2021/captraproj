@@ -2,7 +2,7 @@
   display: flex; /* Use flexbox for layout */
   justify-content: center; /* Center the contents */
   align-items: center; /* Center align items */
-  padding: 20px; /* Increased padding */
+  padding: 30px; /* Increased from 20px */
   background-color: #ffffff; /* White background color */
   font-family: 'Inter', 'Roboto', sans-serif; /* Custom font family */
   position: absolute; /* Absolute positioning */

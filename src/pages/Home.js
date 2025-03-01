@@ -72,58 +72,12 @@ function Home() {
             className="max-h-48 md:max-h-56 lg:max-h-64 mx-auto mb-8 float-animation" // Updated size here
           />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Welcome to Capilli Trading
+            Welcome to Capilli 
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-10">
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-10">
             Hair as a product. Hair as an innovation. Hair as a solution.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 transition-colors">
-              Our Products
-            </button>
-            <button className="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
-              Learn More
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      {/* Keep your existing products section code */}
-      <section 
-        data-section="products"
-        className={`py-20 bg-gray-50 transition-all duration-1000 ${isIntersecting['products'] ? 'opacity-100' : 'opacity-70'}`}
-      >
-        <div className="container mx-auto px-6">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Products</h2>
-            <div className="w-24 h-1 bg-green-500 mx-auto"></div>
-            <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Sustainable solutions made from recycled human hair</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {[
-              { image: hairRugImage, title: "Hair Rugs", description: "Eco-friendly rugs made from recycled human hair, offering durability and unique aesthetic appeal." },
-              { image: hairMatImage, title: "Hair Plant Mats", description: "Organic plant mats that provide essential nutrients to plants while reducing waste." }
-            ].map((product, index) => (
-              <div 
-                key={index}
-                className={`bg-white rounded-xl overflow-hidden shadow-lg transform transition-all duration-700 card-hover ${isIntersecting['products'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="img-hover-zoom">
-                  <img src={product.image} alt={product.title} className="w-full h-80 object-cover" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">{product.title}</h3>
-                  <p className="text-gray-600">{product.description}</p>
-                  <button className="mt-6 px-6 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Removed the div containing the buttons */}
         </div>
       </section>
 
@@ -150,7 +104,6 @@ function Home() {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="mb-16 text-center">
-            <span className="inline-block bg-white bg-opacity-20 text-green-100 rounded-full px-4 py-1 text-sm font-medium mb-4">Our Mission</span>
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Our Advocacy</h2>
             <div className="w-24 h-1 bg-white mx-auto"></div>
             <p className="text-gray-200 mt-8 max-w-2xl mx-auto text-lg">
@@ -287,7 +240,7 @@ function Home() {
                 <div className="text-center">
                   <div className="bg-white bg-opacity-20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto">
                     <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clipRule="evenodd"></path>
+                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
                   </div>
                   <h5 className="text-white font-medium mt-2">Eco-Friendly</h5>
@@ -326,6 +279,59 @@ function Home() {
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 w-full h-12 text-gray-50" fill="currentColor">
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,143.53,125.07,221.36,119.14,289.09,113.93,287.36,84.43,321.39,56.44Z"></path>
           </svg>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section 
+        data-section="products"
+        className={`py-20 bg-green-50 transition-all duration-1000 relative ${isIntersecting['products'] ? 'opacity-100' : 'opacity-70'}`}
+      >
+        {/* Hair-themed background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="productHairPattern" patternUnits="userSpaceOnUse" width="100" height="100" patternTransform="scale(1.5) rotate(45)">
+              {/* Wavy hair strands */}
+              <path fill="none" stroke="#10A54A" strokeWidth="1.2" d="M10,30 C20,10 30,50 40,30 C50,10 60,50 70,30" />
+              <path fill="none" stroke="#10A54A" strokeWidth="1.2" d="M0,60 C10,40 20,80 30,60 C40,40 50,80 60,60" />
+              {/* Curly hair elements */}
+              <path fill="none" stroke="#A2CB70" strokeWidth="1" d="M15,85 C25,65 5,65 15,45 C25,25 5,25 15,5" />
+              <path fill="none" stroke="#A2CB70" strokeWidth="1" d="M75,95 C85,75 65,75 75,55 C85,35 65,35 75,15" />
+            </pattern>
+            <rect x="0" y="0" width="100%" height="100%" fill="url(#productHairPattern)" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Products</h2>
+            <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+            <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Sustainable solutions made from recycled human hair</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {[
+              { image: hairRugImage, title: "Hair Rugs", description: "Eco-friendly rugs made from recycled human hair, offering durability and unique aesthetic appeal." },
+              { image: hairMatImage, title: "Hair Plant Mats", description: "Organic plant mats that provide essential nutrients to plants while reducing waste." }
+            ].map((product, index) => (
+              <div 
+                key={index}
+                className={`bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-xl overflow-hidden shadow-lg transform transition-all duration-700 card-hover ${isIntersecting['products'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+                <div className="img-hover-zoom">
+                  <img src={product.image} alt={product.title} className="w-full h-80 object-cover" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3">{product.title}</h3>
+                  <p className="text-gray-600">{product.description}</p>
+                  <button className="mt-6 px-6 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -404,9 +410,9 @@ function Home() {
             <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
               <pattern id="hairPattern" patternUnits="userSpaceOnUse" width="100" height="100" patternTransform="scale(2) rotate(5)">
                 {/* Wavy hair strand 1 */}
-                <path fill="none" stroke="white" strokeWidth="2" d="M10,30 C20,10 30,50 40,30 C50,10 60,50 70,30 C80,10 90,50 100,30" />
+                <path fill="none" stroke="white" strokeWidth="2" d="M10,30 C20,10 30,50 40,30 C50,10 60,50 70,30" />
                 {/* Wavy hair strand 2 */}
-                <path fill="none" stroke="white" strokeWidth="2" d="M0,60 C10,40 20,80 30,60 C40,40 50,80 60,60 C70,40 80,80 90,60" />
+                <path fill="none" stroke="white" strokeWidth="2" d="M0,60 C10,40 20,80 30,60 C40,40 50,80 60,60" />
                 {/* Curly hair strand */}
                 <path fill="none" stroke="white" strokeWidth="1.5" d="M15,85 C25,65 5,65 15,45 C25,25 5,25 15,5" />
                 <path fill="none" stroke="white" strokeWidth="1.5" d="M55,95 C65,75 45,75 55,55 C65,35 45,35 55,15" />
