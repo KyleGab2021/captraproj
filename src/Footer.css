@@ -3,7 +3,7 @@
   background-color: #10A54A; /* Pigment Green background color */
   color: #fff; /* White text color */
   text-align: center; /* Center align text */
-  padding: 50px 0; /* Padding for spacing */
+  padding: 5px 0; /* Reduced from 50px to 25px */
   font-family: 'Inter', 'Roboto', sans-serif; /* Custom font family */
 }
 
@@ -18,8 +18,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
-  gap: 60px;
+  padding: 10px 20px; /* Reduced top/bottom padding from 20px to 10px */
+  gap: 30px; /* Reduced from 60px to 30px */
 }
 
 .footer-left, .footer-right {
@@ -60,25 +60,21 @@
 
 .social-media-icons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: flex-start;
-  margin-top: 20px;
-  opacity: 1;  /* Ensure icons are visible */
-  transform: none;  /* Remove any transform */
+  gap: 1.2rem; /* Slightly reduced gap */
+  margin-top: 1rem;
+  margin-bottom: 1rem; /* Add space between icons and copyright */
+  justify-content: center;
 }
 
 .social-media-item {
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Column layout */
-  align-items: center; /* Center align items */
-  animation: fadeIn 0.5s ease forwards;
-  opacity: 0;
-  text-decoration: none;  /* Remove underline */
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-media-item:hover {
-  text-decoration: none;  /* Ensure no underline on hover */
+  transform: translateY(-3px);
+  color: #4a90e2;
 }
 
 @keyframes fadeIn {
@@ -93,7 +89,7 @@
 }
 
 .social-icon {
-  font-size: 3em; /* Large icon size */
+  font-size: 1.8em; /* Reduced from 3em */
   color: #fff; /* White color for icons */
   transition: color 0.3s ease; /* Smooth color transition */
 }
@@ -145,15 +141,15 @@
 .copyright {
   font-size: 0.9em;
   color: rgba(255, 255, 255, 0.6);
-  margin-top: 40px;
-  text-align: left;
+  margin-top: 15px; /* Reduced from 20px to 15px */
+  text-align: center;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
   }
 
   .footer-left, .footer-right,
@@ -166,4 +162,13 @@
   .social-media-icons {
     justify-content: center;
   }
+
+  .social-icon {
+    font-size: 1.5em; /* Even smaller on mobile */
+  }
+}
+
+.footer-container {
+  width: 100%;
+  text-align: center;
 }

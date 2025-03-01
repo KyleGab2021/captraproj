@@ -75,7 +75,7 @@ function Home() {
             Welcome to Capilli Trading
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-10">
-            Your trusted partner in sustainable hair product solutions.
+            Hair as a product. Hair as an innovation. Hair as a solution.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button className="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 transition-colors">
