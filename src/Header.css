@@ -29,26 +29,30 @@
 .nav a {
   color: #10A54A; /* Pigment Green text color */
   font-weight: bold; /* Bold text */
-  font-size: 20px; /* Large font size */
+  font-size: 25px; /* Large font size */
   text-decoration: none; /* Remove default text decoration */
-}
-
-.nav a:hover {
-  position: relative; /* Relative positioning for hover effect */
+  position: relative; /* Add relative positioning for the pseudo-element */
+  transition: color 0.3s ease; /* Optional: smooth color transition on hover */
 }
 
 .nav a::after {
-  content: ''; /* Empty content for the underline effect */
-  position: absolute; /* Absolute positioning */
-  width: 0; /* Initial width */
-  height: 2px; /* Height of the underline */
-  bottom: -2px; /* Position below the text */
-  left: 50%; /* Center the underline */
-  background-color: #A2CB70; /* Pistachio background color */
-  transition: width 0.5s ease, left 0.5s ease; /* Smooth transition for width and position */
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* Position the line below the text */
+  width: 100%;
+  height: 2px;
+  background-color: #A2CB70;
+  transform: scaleX(0); /* Start with invisible line */
+  transform-origin: right;
+  transition: transform 0.3s ease;
 }
 
 .nav a:hover::after {
-  width: 100%; /* Full width on hover */
-  left: 0; /* Align to left on hover */
+  transform: scaleX(1); /* Show full line on hover */
+  transform-origin: left;
+}
+
+.nav a:hover {
+  color: #0d8a3f; /* Optional: slightly darker shade on hover */
 }

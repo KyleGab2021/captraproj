@@ -9,7 +9,7 @@ import phoebeImage from '../assets/phoebe_pahunang.jpg';
 // import jessyImage from '../assets/jessy_decastro.jpg';
 import rhoieImage from '../assets/rhoie_omlero-mendez.jpg';
 // import sittieImage from '../assets/sittie-zaima.jpg';
-
+import aboutBackground from '../assets/capilliaboutpagebg.jpg';
 
 function About() {
   const defaultImage = "https://placehold.co/400x600/10A54A/ffffff?text=Team+Member";
@@ -93,10 +93,19 @@ function About() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white font-inter">
       {/* Hero Section */}
-      <section className="relative h-[50vh] bg-gradient-to-br from-green-600 to-green-900 overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-20"></div>
+      <section className="relative h-[50vh] overflow-hidden">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src={aboutBackground} 
+            alt="About Us Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-green-600/70 to-green-900/70"></div>
+          <div className="absolute inset-0 grid-pattern opacity-10"></div>
+        </div>
         
-        <div className="container mx-auto px-6 h-full flex flex-col justify-center items-center relative">
+        <div className="container mx-auto px-6 h-full flex flex-col justify-center items-center relative z-10">
           <h1 className="fade-up text-5xl md:text-7xl font-bold text-white mb-6">
             About Us
           </h1>

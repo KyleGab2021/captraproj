@@ -18,11 +18,15 @@ import rayzorBarbershop from '../assets/rayzorbarbershop_sponsorlogo.png';
 import sanRoqueHpp from '../assets/sanroquehpp_sponsorlogo.png';
 import socialImpactOracle from '../assets/socialimpactoraclesuite_sponsorlogo.png';
 import spiPower from '../assets/spipower_sponsorlogo.png';
+import steagstate from '../assets/steagstate_sponsorlogo.png';
 import wtGardens from '../assets/wtgardens_sponsorlogo.png';
+import heroBackground from '../assets/capillihomepagebg.jpg';
 
 function Home() {
   const [isIntersecting, setIsIntersecting] = useState({});
   const [isHovering, setIsHovering] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const carouselRef = useRef(null);
 
   const handleIntersection = useCallback((entries) => {
@@ -55,29 +59,149 @@ function Home() {
     { src: rayzorBarbershop, alt: 'Rayzor Barbershop' },
     { src: sanRoqueHpp, alt: 'San Roque HPP' },
     { src: socialImpactOracle, alt: 'Social Impact Oracle Suite' },
+    { src: steagstate, alt: 'Steag State Power Inc.' },
     { src: spiPower, alt: 'SPI Power' },
     { src: wtGardens, alt: 'WT Gardens' }
   ];
- 
+
+  // Product subcategories
+  const productSubcategories = {
+    'Hair Rugs': ['Round Rug', 'Rectangular Rug', 'Custom Size Rug'],
+    'Hair Plant Mats': ['Small Mat', 'Medium Mat', 'Large Mat', 'Custom Size Mat']
+  };
+
+  const handleProductClick = (productTitle) => {
+    setSelectedProduct(productTitle);
+    setShowModal(true);
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    setShowModal(false);
+  };
+
+  // Product Inquiry Modal Component
+  const ProductModal = () => {
+    if (!showModal) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+          <button
+            onClick={() => setShowModal(false)}
+            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <h3 className="text-2xl font-bold text-gray-800 mb-4">
+            {selectedProduct} Inquiry
+          </h3>
+
+          <form onSubmit={handleSubmitForm} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Product Variant
+              </label>
+              <select
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                required
+              >
+                <option value="">Select a variant</option>
+                {productSubcategories[selectedProduct]?.map((subcategory) => (
+                  <option key={subcategory} value={subcategory}>
+                    {subcategory}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Quantity
+              </label>
+              <input
+                type="number"
+                min="1"
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Your Name
+              </label>
+              <input
+                type="text"
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Email Address
+              </label>
+              <input
+                type="email"
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Additional Notes
+              </label>
+              <textarea
+                rows="3"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
+            >
+              Submit Inquiry
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
   return (
-     <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section */}
-      {/* Keep your existing hero section code */}
-      <section className="relative h-screen bg-gradient-to-b from-green-900 to-black flex flex-col justify-center items-center px-4">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+      <section className="relative h-screen flex flex-col justify-center items-center px-4">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroBackground} 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-green-900/80 to-black/80"></div>
+        </div>
+
+        {/* Content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <img 
             src={logoImage} 
             alt="Capilli Trading Logo" 
-            className="max-h-48 md:max-h-56 lg:max-h-64 mx-auto mb-8 float-animation" // Updated size here
+            className="max-h-48 md:max-h-56 lg:max-h-64 mx-auto mb-8 float-animation"
           />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Welcome to Capilli 
+            Walang sayang sa <span className="text-[#047857]">buhok</span> mo.
           </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-10">
+          <p className="text-xl md:text-2xl lg:text-2xl text-gray-200 mb-10">
             Hair as a product. Hair as an innovation. Hair as a solution.
           </p>
-          {/* Removed the div containing the buttons */}
         </div>
       </section>
 
@@ -169,70 +293,39 @@ function Home() {
                   </div>
                 </div>
               </div>
-
-              {/* Impact Stats Card */}
-              <div className="bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-xl shadow-xl overflow-hidden">
-                <div className="p-12">
-                  <h4 className="text-xl font-bold text-gray-800 mb-8 flex items-center">
-                    <svg className="w-6 h-6 text-green-600 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                      <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                    </svg>
-                    Our Environmental Impact
-                  </h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
-                      <span className="block text-4xl font-bold text-green-700 mb-2">48%</span>
-                      <span className="text-sm text-gray-600 font-medium">Waste Reduction</span>
-                    </div>
-                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
-                      <span className="block text-4xl font-bold text-green-700 mb-2">1.2K</span>
-                      <span className="text-sm text-gray-600 font-medium">Kg Hair Recycled</span>
-                    </div>
-                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
-                      <span className="block text-4xl font-bold text-green-700 mb-2">15+</span>
-                      <span className="text-sm text-gray-600 font-medium">Communities</span>
-                    </div>
-                    <div className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-colors duration-300">
-                      <span className="block text-4xl font-bold text-green-700 mb-2">3K</span>
-                      <span className="text-sm text-gray-600 font-medium">CO₂ Reduction</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
+
             {/* Right column - Advocacy image and values */}
             <div className={`lg:w-1/2 transition-all duration-700 ${isIntersecting['advocacy'] ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
               <div className="relative h-full">
                 {/* Main image with overlay */}
-                <div className="rounded-xl overflow-hidden shadow-2xl h-full">
-                  <div className="relative h-full">
-                    <div className="absolute inset-0 bg-gradient-to-t from-green-900 to-transparent opacity-60"></div>
-                    <img 
-                      src={advocacyImage} 
-                      alt="Advocacy" 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h4 className="text-xl font-bold mb-2">Sustainability in Action</h4>
-                      <p className="text-gray-100">
-                        Our innovative approach converts waste hair into valuable resources, 
-                        reducing environmental impact while creating sustainable products.
-                      </p>
-                      <button className="mt-4 px-6 py-2 bg-white text-green-700 font-medium rounded-lg hover:bg-green-50 transition-colors inline-flex items-center">
-                        Join Our Movement
-                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
+              <div className="rounded-xl overflow-hidden shadow-2xl h-full">
+                <div className="relative h-full">
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900 to-transparent opacity-60"></div>
+                <img 
+                  src={advocacyImage} 
+                  alt="Advocacy" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h4 className="text-xl font-bold mb-2">Sustainability in Action</h4>
+                  <p className="text-gray-100">
+                  Our innovative approach converts waste hair into valuable resources, 
+                  reducing environmental impact while creating sustainable products.
+                  </p>
+                  <button className="mt-4 px-6 py-2 bg-white text-green-700 font-medium rounded-lg hover:bg-green-700 hover:text-white transition-colors inline-flex items-center">
+                  Join Our Movement
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                  </button>
                 </div>
+                </div>
+              </div>
               </div>
             </div>
           </div>
-          
+            
           {/* Sustainability Badges */}
           <div className={`mt-16 transition-all duration-1000 delay-300 ${isIntersecting['advocacy'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6">
@@ -295,47 +388,52 @@ function Home() {
               <path fill="none" stroke="#10A54A" strokeWidth="1.2" d="M10,30 C20,10 30,50 40,30 C50,10 60,50 70,30" />
               <path fill="none" stroke="#10A54A" strokeWidth="1.2" d="M0,60 C10,40 20,80 30,60 C40,40 50,80 60,60" />
               {/* Curly hair elements */}
-              <path fill="none" stroke="#A2CB70" strokeWidth="1" d="M15,85 C25,65 5,65 15,45 C25,25 5,25 15,5" />
-              <path fill="none" stroke="#A2CB70" strokeWidth="1" d="M75,95 C85,75 65,75 75,55 C85,35 65,35 75,15" />
-            </pattern>
-            <rect x="0" y="0" width="100%" height="100%" fill="url(#productHairPattern)" />
-          </svg>
-        </div>
+                      <path fill="none" stroke="#A2CB70" strokeWidth="1" d="M15,85 C25,65 5,65 15,45 C25,25 5,25 15,5" />
+                      <path fill="none" stroke="#A2CB70" strokeWidth="1" d="M75,95 C85,75 65,75 75,55 C85,35 65,35 75,15" />
+                    </pattern>
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#productHairPattern)" />
+                    </svg>
+                  </div>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Products</h2>
-            <div className="w-24 h-1 bg-green-500 mx-auto"></div>
-            <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Sustainable solutions made from recycled human hair</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {[
-              { image: hairRugImage, title: "Hair Rugs", description: "Eco-friendly rugs made from recycled human hair, offering durability and unique aesthetic appeal." },
-              { image: hairMatImage, title: "Hair Plant Mats", description: "Organic plant mats that provide essential nutrients to plants while reducing waste." }
-            ].map((product, index) => (
-              <div 
-                key={index}
-                className={`bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-xl overflow-hidden shadow-lg transform transition-all duration-700 card-hover ${isIntersecting['products'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="img-hover-zoom">
-                  <img src={product.image} alt={product.title} className="w-full h-80 object-cover" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">{product.title}</h3>
-                  <p className="text-gray-600">{product.description}</p>
-                  <button className="mt-6 px-6 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                  <div className="container mx-auto px-6 relative z-10">
+                    <div className="mb-16 text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Products</h2>
+                    <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+                    <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Sustainable solutions made from recycled human hair</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    {[
+                      { image: hairRugImage, title: "Hair Rugs", description: "Eco-friendly rugs made from recycled human hair, offering durability and unique aesthetic appeal." },
+                      { image: hairMatImage, title: "Hair Plant Mats", description: "Organic plant mats that provide essential nutrients to plants while reducing waste." }
+                    ].map((product, index) => (
+                      <div 
+                      key={index}
+                      className={`bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-xl overflow-hidden shadow-lg transform transition-all duration-700 card-hover flex flex-col ${isIntersecting['products'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                      style={{ transitionDelay: `${index * 200}ms` }}
+                      >
+                      <div className="img-hover-zoom">
+                        <img src={product.image} alt={product.title} className="w-full h-80 object-cover" />
+                      </div>
+                      <div className="p-8 flex flex-col flex-grow">
+                        <div className="flex-grow">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-3">{product.title}</h3>
+                        <p className="text-gray-600">{product.description}</p>
+                        </div>
+                        <button 
+                        onClick={() => handleProductClick(product.title)}
+                        className="mt-6 px-6 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors self-center"
+                        >
+                        Learn More
+                        </button>
+                      </div>
+                      </div>
+                    ))}
+                    </div>
+                  </div>
+                  </section>
 
-      {/* Partners Section with Carousel */}
+                  {/* Partners Section with Carousel */}
       <section 
         data-section="sponsors"
         className={`py-20 bg-gray-100 transition-all duration-1000 ${isIntersecting['sponsors'] ? 'opacity-100' : 'opacity-70'}`}>
@@ -426,7 +524,7 @@ function Home() {
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us</h2>
             <div className="w-24 h-1 bg-green-400 mx-auto"></div>
             <p className="text-gray-200 mt-6 max-w-2xl mx-auto">Have questions about our sustainable hair products or want to collaborate? Reach out to us today.</p>
           </div>
@@ -606,6 +704,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Modal */}
+      <ProductModal />
     </div>
   );
 }

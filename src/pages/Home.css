@@ -12,7 +12,7 @@
 }
 
 .float-animation {
-  animation: float 6s ease-in-out infinite;
+  animation: float 2.5s ease-in-out infinite;
 }
 
 /* Gradient text for special headings */
@@ -163,7 +163,7 @@
 }
 
 .auto-scrolling {
-  animation: autoScroll 40s linear infinite;
+  animation: autoScroll 10s linear infinite;
 }
 
 /* Media query for smaller screens - faster animation and smaller logos */

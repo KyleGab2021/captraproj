@@ -60,7 +60,7 @@
 
 .social-media-icons {
   display: flex;
-  gap: 1.2rem; /* Slightly reduced gap */
+  gap: 5rem; /* Slightly reduced gap */
   margin-top: 1rem;
   margin-bottom: 1rem; /* Add space between icons and copyright */
   justify-content: center;
