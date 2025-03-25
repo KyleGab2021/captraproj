@@ -140,12 +140,12 @@ function About() {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="fade-up group cursor-pointer"
+              className="fade-up group cursor-pointer aspect-square" // Added aspect-square
               style={{ transitionDelay: `${index * 100}ms` }}
               onClick={() => handleMemberClick(member)}
             >
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
+                <div className="relative h-3/4 overflow-hidden">
                   <img 
                     src={member.image} 
                     alt={member.name}
@@ -154,11 +154,11 @@ function About() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                <div className="p-6 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-green-600 to-green-900 bg-clip-text text-transparent">
+                <div className="h-1/4 p-4 flex flex-col justify-center">
+                  <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-green-900 bg-clip-text text-transparent truncate">
                     {member.name}
                   </h3>
-                  <p className="mt-2 text-gray-600">
+                  <p className="mt-1 text-gray-600 text-sm truncate">
                     {member.position}
                   </p>
                 </div>
