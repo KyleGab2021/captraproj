@@ -21,6 +21,7 @@ import spiPower from '../assets/spipower_sponsorlogo.png';
 import steagstate from '../assets/steagstate_sponsorlogo.png';
 import wtGardens from '../assets/wtgardens_sponsorlogo.png';
 import heroBackground from '../assets/capillihomepagebg.jpg';
+import aboutBackground from '../assets/capillihomepagebg.jpg';
 
 function Home() {
   const [isIntersecting, setIsIntersecting] = useState({});
@@ -96,7 +97,6 @@ function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-
           <h3 className="text-2xl font-bold text-gray-800 mb-4">
             {selectedProduct} Inquiry
           </h3>
@@ -174,6 +174,32 @@ function Home() {
       </div>
     );
   };
+
+  // Modify the News Section to integrate Facebook API for posting, updating, and deleting news articles from Facebook page to the web application. 
+  // Here is the Link: https://developers.facebook.com/docs/pages-api/overview 
+  const newsItems = [
+    {
+      date: "March 15, 2024",
+      category: "Milestone",
+      title: "Capilli Trading Expands to Visayas Region",
+      excerpt: "Capilli Trading announces expansion of operations to key cities in the Visayas region, marking a significant milestone in our growth.",
+      imageUrl: aboutBackground // Replace with actual news image
+    },
+    {
+      date: "March 1, 2024",
+      category: "Partnership",
+      title: "New Partnership with Local Salons",
+      excerpt: "We're excited to announce our partnership with 50+ local salons to implement sustainable hair waste management practices.",
+      imageUrl: aboutBackground // Replace with actual news image
+    },
+    {
+      date: "February 15, 2024",
+      category: "Achievement",
+      title: "Environmental Impact Award 2024",
+      excerpt: "Capilli Trading receives recognition for outstanding contribution to environmental sustainability.",
+      imageUrl: aboutBackground // Replace with actual news image
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
@@ -433,7 +459,7 @@ function Home() {
                   </div>
                   </section>
 
-                  {/* Partners Section with Carousel */}
+      {/* Partners Section */}
       <section 
         data-section="sponsors"
         className={`py-20 bg-gray-100 transition-all duration-1000 ${isIntersecting['sponsors'] ? 'opacity-100' : 'opacity-70'}`}>
@@ -496,8 +522,62 @@ function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Modify the News Section to integrate Facebook API for posting, updating, and deleting news articles from Facebook page to the web application. Here is the Link: https://developers.facebook.com/docs/pages-api/overview */}
+      {/* News Section */}
+      <section 
+        data-section="news"
+        className={`py-20 bg-[#047857] relative transition-all duration-1000 ${isIntersecting['news'] ? 'opacity-100' : 'opacity-70'}`}
+      >
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Latest News</h2>
+            <div className="w-24 h-1 bg-green-300 mx-auto"></div>
+            <p className="text-gray-100 mt-6 max-w-2xl mx-auto">Stay updated with our latest developments and initiatives</p>
+          </div>
 
-      {/* Contact Section - With Hair-Inspired Design */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {newsItems.map((news, index) => (
+              <div 
+                key={index}
+                className={`bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-700 transform hover:-translate-y-2 hover:shadow-2xl ${
+                  isIntersecting['news'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                }`}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+                <div className="relative h-48">
+                  <img 
+                    src={news.imageUrl} 
+                    alt={news.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-green-600 text-white text-sm font-medium rounded-full">
+                      {news.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="text-sm text-gray-500 mb-2">{news.date}</div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{news.title}</h3>
+                  <p className="text-gray-600 mb-4">{news.excerpt}</p>
+                  <a 
+                    href="#" 
+                    className="inline-flex items-center text-green-600 hover:text-green-700 font-medium"
+                  >
+                    Read More
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section*/}
       <section 
         data-section="contact"
         className={`py-20 relative overflow-hidden transition-all duration-1000 ${isIntersecting['contact'] ? 'opacity-100' : 'opacity-70'}`}
