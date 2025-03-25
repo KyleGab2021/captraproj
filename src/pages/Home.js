@@ -423,7 +423,7 @@ function Home() {
 
                   <div className="container mx-auto px-6 relative z-10">
                     <div className="mb-16 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Products</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">Our Products</h2>
                     <div className="w-24 h-1 bg-green-500 mx-auto"></div>
                     <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Sustainable solutions made from recycled human hair</p>
                     </div>
@@ -465,7 +465,7 @@ function Home() {
         className={`py-20 bg-gray-100 transition-all duration-1000 ${isIntersecting['sponsors'] ? 'opacity-100' : 'opacity-70'}`}>
         <div className="container mx-auto px-6">
           <div className="mb-16 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Partners</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">Our Partners</h2>
             <div className="w-24 h-1 bg-green-500 mx-auto"></div>
             <p className="text-gray-600 mt-6 max-w-2xl mx-auto">Working together with these amazing organizations to create positive change</p>
           </div>
@@ -531,7 +531,7 @@ function Home() {
       >
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Latest News</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Latest News</h2>
             <div className="w-24 h-1 bg-green-300 mx-auto"></div>
             <p className="text-gray-100 mt-6 max-w-2xl mx-auto">Stay updated with our latest developments and initiatives</p>
           </div>
@@ -604,7 +604,7 @@ function Home() {
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Contact Us</h2>
             <div className="w-24 h-1 bg-green-400 mx-auto"></div>
             <p className="text-gray-200 mt-6 max-w-2xl mx-auto">Have questions about our sustainable hair products or want to collaborate? Reach out to us today.</p>
           </div>
