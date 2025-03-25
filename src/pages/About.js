@@ -140,20 +140,12 @@ function About() {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-<<<<<<< Updated upstream
               className="fade-up group cursor-pointer aspect-square" // Added aspect-square
-=======
-              className="fade-up group cursor-pointer w-full aspect-square" // Added aspect-square
->>>>>>> Stashed changes
               style={{ transitionDelay: `${index * 100}ms` }}
               onClick={() => handleMemberClick(member)}
             >
               <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
-<<<<<<< Updated upstream
                 <div className="relative h-3/4 overflow-hidden">
-=======
-                <div className="relative h-[70%] overflow-hidden">
->>>>>>> Stashed changes
                   <img 
                     src={member.image} 
                     alt={member.name}
@@ -162,11 +154,7 @@ function About() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-<<<<<<< Updated upstream
                 <div className="h-1/4 p-4 flex flex-col justify-center">
-=======
-                <div className="p-4 h-[30%] flex flex-col justify-center">
->>>>>>> Stashed changes
                   <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-green-900 bg-clip-text text-transparent truncate">
                     {member.name}
                   </h3>
