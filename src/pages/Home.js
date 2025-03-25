@@ -197,7 +197,7 @@ function Home() {
             className="max-h-48 md:max-h-56 lg:max-h-64 mx-auto mb-8 float-animation"
           />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Walang sayang sa <span className="text-[#047857]">buhok</span> mo.
+            Walang sayang ang <span className="text-[#047857]">buhok</span> mo.
           </h1>
           <p className="text-xl md:text-2xl lg:text-2xl text-gray-200 mb-10">
             Hair as a product. Hair as an innovation. Hair as a solution.
