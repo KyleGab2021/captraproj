@@ -30,7 +30,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#047857] text-white">
       {/* Main Footer */}
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto">
@@ -55,7 +55,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
                   className={`
-                    p-3 rounded-full bg-gray-800
+                    p-3 rounded-full bg-black
                     transform transition-all duration-300
                     hover:scale-110 ${social.hoverColor} hover:text-white
                     focus:outline-none focus:ring-2 focus:ring-green-400
@@ -70,7 +70,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-[#058d66]">
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col items-center space-y-4">
             <p className="text-sm text-gray-400">

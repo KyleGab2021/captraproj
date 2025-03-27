@@ -129,6 +129,8 @@
 .logo-group {
   display: flex;
   align-items: center;
+  gap: 40px;
+  padding: 0 20px;
 }
 
 .sponsor-logo {
@@ -158,12 +160,12 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-150px * 14 - 40px * 14)); /* Adjust based on logo width and margin */
+    transform: translateX(calc(-150px * 4 - 40px * 4)); /* Adjusted for 4 logos */
   }
 }
 
 .auto-scrolling {
-  animation: autoScroll 10s linear infinite;
+  animation: autoScroll 5s linear infinite;
 }
 
 /* Media query for smaller screens - faster animation and smaller logos */
@@ -178,12 +180,12 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-120px * 14 - 30px * 14)); /* Adjust based on mobile logo width and margin */
+      transform: translateX(calc(-120px * 4 - 30px * 4)); /* Adjusted for 4 logos */
     }
   }
   
   .auto-scrolling {
-    animation: autoScroll 30s linear infinite;
+    animation: autoScroll 12s linear infinite;
   }
 }
 
@@ -195,4 +197,32 @@
 
 .carousel-nav-button:hover {
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
-} 
+}
+
+/* Add these styles for the image slider */
+.advocacy-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
+}

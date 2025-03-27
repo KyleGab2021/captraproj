@@ -14,6 +14,19 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleNavigation = (e, path) => {
+        e.preventDefault();
+        // First navigate to the path
+        window.location.href = path;
+        // Then scroll to top after a small delay to ensure navigation completes
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 100);
+    };
+
     return (
         <header className={`fixed w-full z-50 transition-all duration-300 ${
             isScrolled 
@@ -30,6 +43,7 @@ const Header = () => {
                             <li key={item.path}>
                                 <Link 
                                     to={item.path}
+                                    onClick={(e) => handleNavigation(e, item.path)}
                                     className={`relative text-2xl font-bold transition-colors duration-300
                                         ${isScrolled 
                                             ? 'text-green-600 hover:text-green-700' 

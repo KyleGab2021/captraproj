@@ -4,7 +4,6 @@ import './Home.css';
 import hairMatImage from '../assets/capilliproducthairmat.jpg';
 import hairRugImage from '../assets/capilliproducthairrug.jpg';
 import logoImage from '../assets/capillitradinglogotext.png';
-import advocacyImage from '../assets/capilliadvocacyimg1.jpg';
 import ateneoBluenest from '../assets/ateneobluenest_sponsorlogo.png';
 import automobilico from '../assets/automobilico_sponsorlogo.png';
 import eccp from '../assets/eccp_sponsorlogo.png';
@@ -22,6 +21,11 @@ import steagstate from '../assets/steagstate_sponsorlogo.png';
 import wtGardens from '../assets/wtgardens_sponsorlogo.png';
 import heroBackground from '../assets/capillihomepagebg.jpg';
 import aboutBackground from '../assets/capillihomepagebg.jpg';
+import advocacyImg1 from '../assets/capilliadvocacyimg1.jpg';
+import advocacyImg2 from '../assets/capilliadvocacyimg2.jpg';
+import advocacyImg3 from '../assets/capilliadvocacyimg3.jpg';
+import advocacyImg4 from '../assets/capilliadvocacyimg4.jpg';
+import advocacyImg5 from '../assets/capilliadvocacyimg5.JPG';
 
 function Home() {
   const [isIntersecting, setIsIntersecting] = useState({});
@@ -29,6 +33,21 @@ function Home() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const carouselRef = useRef(null);
+  const [selectedPartner, setSelectedPartner] = useState(null);
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const advocacyImages = [
+    advocacyImg1, advocacyImg2, advocacyImg3, advocacyImg4, advocacyImg5
+  ];
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % advocacyImages.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(slideInterval);
+  }, []);
 
   const handleIntersection = useCallback((entries) => {
     entries.forEach((entry) => {
@@ -46,23 +65,113 @@ function Home() {
     return () => observer.disconnect();
   }, [handleIntersection]);
 
-  // All your existing code remains the same
+
   const sponsorLogos = [
-    { src: ateneoBluenest, alt: 'Ateneo Blue Nest' },
-    { src: automobilico, alt: 'Automobilico' },
-    { src: eccp, alt: 'ECCP' },
-    { src: fibers, alt: 'Fibers' },
-    { src: ideya, alt: 'Ideya' },
-    { src: matterOfTrust, alt: 'Matter of Trust' },
-    { src: motolite, alt: 'Motolite' },
-    { src: plantbox, alt: 'Plantbox' },
-    { src: proyektoPilipinas, alt: 'Proyekto Pilipinas' },
-    { src: rayzorBarbershop, alt: 'Rayzor Barbershop' },
-    { src: sanRoqueHpp, alt: 'San Roque HPP' },
-    { src: socialImpactOracle, alt: 'Social Impact Oracle Suite' },
-    { src: steagstate, alt: 'Steag State Power Inc.' },
-    { src: spiPower, alt: 'SPI Power' },
-    { src: wtGardens, alt: 'WT Gardens' }
+    { 
+      src: matterOfTrust, 
+      alt: '',
+      description: 'Global nonprofit organization dedicated to linking surplus resources with unmet needs, specializing in ecological solutions and waste management.',
+      website: 'https://matteroftrust.example.com',
+      category: 'Environmental Partner'
+    },
+    { 
+      src: sanRoqueHpp, 
+      alt: '',
+      description: 'Hydroelectric power plant advocating for renewable energy and environmental sustainability in power generation.',
+      website: 'https://sanroquehpp.example.com',
+      category: 'Energy Partner'
+    },
+    { 
+      src: socialImpactOracle, 
+      alt: '',
+      description: 'Technology solutions provider specializing in software for social enterprises and environmental initiatives.',
+      website: 'https://socialimpactoracle.example.com',
+      category: 'Technology Partner'
+    },
+    { 
+      src: wtGardens, 
+      alt: '',
+      description: 'Sustainable landscaping and garden design company promoting eco-friendly horticultural practices.',
+      website: 'https://wtgardens.example.com',
+      category: 'Horticulture Partner'
+    }
+    // { 
+    //   src: ateneoBluenest,
+    //   alt: '',
+    //   description: 'A business incubation hub fostering innovation and entrepreneurship within Ateneo de Manila University. Supporting startups and social enterprises that drive sustainable development.',
+    //   website: 'https://ateneo.edu/bluenest',
+    //   category: 'Academic Partner'
+    // },
+    // { 
+    //   src: automobilico,
+    //   alt: '',
+    //   description: 'Leading automotive service provider specializing in eco-friendly maintenance solutions and sustainable practices in the automotive industry.',
+    //   website: 'https://automobilico.example.com',
+    //   category: 'Industry Partner'
+    // },
+    // { 
+    //   src: eccp,
+    //   alt: '',
+    //   description: 'European Chamber of Commerce of the Philippines - A bilateral foreign chamber that promotes European-Philippine economic relations and creates business opportunities.',
+    //   website: 'https://eccp.example.com',
+    //   category: 'Business Network Partner'
+    // },
+    // { 
+    //   src: fibers,
+    //   alt: '',
+    //   description: 'Innovative textile manufacturing company specializing in sustainable fiber processing and eco-friendly material development.',
+    //   website: 'https://fibers.example.com',
+    //   category: 'Manufacturing Partner'
+    // },
+    // { 
+    //   src: ideya, 
+    //   alt: '',
+    //   description: 'Creative solutions hub focusing on sustainable design and environmental innovation projects across the Philippines.',
+    //   website: 'https://ideya.example.com',
+    //   category: 'Innovation Partner'
+    // },
+    // { 
+    //   src: motolite, 
+    //   alt: '',
+    //   description: 'Leading battery manufacturer in the Philippines committed to sustainable practices and environmental responsibility.',
+    //   website: 'https://motolite.example.com',
+    //   category: 'Industry Partner'
+    // },
+    // { 
+    //   src: plantbox, 
+    //   alt: '',
+    //   description: 'Urban farming solutions provider promoting sustainable agriculture and green living in urban environments.',
+    //   website: 'https://plantbox.example.com',
+    //   category: 'Agricultural Partner'
+    // },
+    // { 
+    //   src: proyektoPilipinas, 
+    //   alt: '',
+    //   description: 'Social development initiative focusing on sustainable community projects and environmental conservation in the Philippines.',
+    //   website: 'https://proyektopilipinas.example.com',
+    //   category: 'Community Partner'
+    // },
+    // { 
+    //   src: rayzorBarbershop, 
+    //   alt: '',
+    //   description: 'Premium barbershop chain committed to sustainable practices and responsible hair waste management.',
+    //   website: 'https://rayzorbarbershop.example.com',
+    //   category: 'Supply Partner'
+    // },
+    // { 
+    //   src: steagstate, 
+    //   alt: '',
+    //   description: 'Power generation company committed to sustainable energy practices and environmental stewardship.',
+    //   website: 'https://steagstate.example.com',
+    //   category: 'Energy Partner'
+    // },
+    // { 
+    //   src: spiPower, 
+    //   alt: '',
+    //   description: 'Renewable energy provider focused on developing sustainable power solutions for communities.',
+    //   website: 'https://spipower.example.com',
+    //   category: 'Energy Partner'
+    // },
   ];
 
   // Product subcategories
@@ -80,6 +189,11 @@ function Home() {
     e.preventDefault();
     // Handle form submission logic here
     setShowModal(false);
+  };
+
+  const handlePartnerClick = (partner) => {
+    setSelectedPartner(partner);
+    setIsPartnerModalOpen(true);
   };
 
   // Product Inquiry Modal Component
@@ -102,7 +216,7 @@ function Home() {
           </h3>
 
           <form onSubmit={handleSubmitForm} className="space-y-4">
-            <div>
+            <div></div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Product Variant
               </label>
@@ -117,7 +231,6 @@ function Home() {
                   </option>
                 ))}
               </select>
-            </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -222,8 +335,12 @@ function Home() {
             alt="Capilli Trading Logo" 
             className="max-h-48 md:max-h-56 lg:max-h-64 mx-auto mb-8 float-animation"
           />
+          {/* Correcting grammatical error in the Filipino subject-predicate agreement:
+          1. (Walang sayang SA buhok mo) just means "There is no waste in your hair," suggesting that nothing is wasted or ruined in the context of your hair. Using "SA" is appropriate because it indicates the relationship or direction of the statement toward "buhok mo" (your hair). It indicates a relational direction or possession and is used to show where the waste or non-waste is happening. 
+          2. (Walang sayang ANG buhok mo) is incorrect because the structure does not properly connect the subject and the predicate. "ANG" is a focus marker, identifying the subject of the sentence, often used when you want to describe or emphasize that subject. In this case, "buhok mo" would be the subject, but it doesn't fit logically with the abstract concept of "waste" ("sayang"). 
+          */}
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Walang sayang ang <span className="text-[#047857]">buhok</span> mo.
+            Walang sayang sa <span className="text-[#047857]">buhok</span> mo.
           </h1>
           <p className="text-xl md:text-2xl lg:text-2xl text-gray-200 mb-10">
             Hair as a product. Hair as an innovation. Hair as a solution.
@@ -284,22 +401,22 @@ function Home() {
                   </p>
                   <ul className="space-y-4 text-gray-700">
                     <li className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                      </svg>
-                      <span><strong>Environmental Sustainability</strong> - Reducing waste through innovative recycling</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-green-500 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                       </svg>
                       <span><strong>Community Impact</strong> - Creating positive socio-economic outcomes</span>
                     </li>
                     <li className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-green-500 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                       </svg>
                       <span><strong>Innovation</strong> - Developing breakthrough sustainable solutions</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-5 h-5 text-green-500 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                      </svg>
+                      <span><strong>Sustainability</strong> - Reducing waste through innovative recycling</span>
                     </li>
                   </ul>
                 </div>
@@ -327,13 +444,24 @@ function Home() {
                 {/* Main image with overlay */}
               <div className="rounded-xl overflow-hidden shadow-2xl h-full">
                 <div className="relative h-full">
-                <div className="absolute inset-0 bg-gradient-to-t from-green-900 to-transparent opacity-60"></div>
-                <img 
-                  src={advocacyImage} 
-                  alt="Advocacy" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900 via-green-800/50 to-transparent opacity-75"></div>
+                <div className="relative h-full overflow-hidden">
+                  {advocacyImages.map((img, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        currentSlide === index ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Advocacy ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
                   <h4 className="text-xl font-bold mb-2">Sustainability in Action</h4>
                   <p className="text-gray-100">
                   Our innovative approach converts waste hair into valuable resources, 
@@ -341,10 +469,24 @@ function Home() {
                   </p>
                   <button className="mt-4 px-6 py-2 bg-white text-green-700 font-medium rounded-lg hover:bg-green-700 hover:text-white transition-colors inline-flex items-center">
                   Join Our Movement
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                   </svg>
                   </button>
+                </div>
+                
+                {/* Slide indicators */}
+                <div className="absolute bottom-4 right-4 flex space-x-2 z-10">
+                  {advocacyImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentSlide === index ? 'bg-white w-4' : 'bg-white/50'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
                 </div>
                 </div>
               </div>
@@ -488,9 +630,10 @@ function Home() {
                 {sponsorLogos.map((logo, index) => (
                   <div 
                     key={`logo-1-${index}`}
-                    className="sponsor-logo"
+                    className="sponsor-logo cursor-pointer"
+                    onClick={() => handlePartnerClick(logo)}
                   >
-                    <div className="bg-white p-4 rounded-lg shadow-sm w-full h-full flex items-center justify-center">
+                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 w-full h-full flex items-center justify-center">
                       <img 
                         src={logo.src} 
                         alt={logo.alt} 
@@ -506,9 +649,10 @@ function Home() {
                 {sponsorLogos.map((logo, index) => (
                   <div 
                     key={`logo-2-${index}`}
-                    className="sponsor-logo"
+                    className="sponsor-logo cursor-pointer"
+                    onClick={() => handlePartnerClick(logo)}
                   >
-                    <div className="bg-white p-4 rounded-lg shadow-sm w-full h-full flex items-center justify-center">
+                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 w-full h-full flex items-center justify-center">
                       <img 
                         src={logo.src} 
                         alt={logo.alt} 
@@ -788,7 +932,14 @@ function Home() {
 
       {/* Sticky Message Icon */}
       <button 
-        onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+        onClick={() => {
+          const contactSection = document.getElementById('contact');
+          if (contactSection) {
+            const yOffset = -80; // Offset to account for any fixed headers
+            const y = contactSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
+          }
+        }}
         className="fixed bottom-8 right-8 z-50 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
         aria-label="Contact Us"
       >
@@ -810,6 +961,54 @@ function Home() {
 
       {/* Modal */}
       <ProductModal />
+
+      {/* Add Partner Modal */}
+      {isPartnerModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-lg relative">
+            <button
+              onClick={() => setIsPartnerModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div className="p-8"></div>
+              <div className="flex items-center mb-6">
+                <img
+                  src={selectedPartner?.src}
+                  alt={selectedPartner?.alt}
+                  className="h-16 w-auto object-contain mr-4"
+                />
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800">
+                    {selectedPartner?.alt}
+                  </h3>
+                  <span className="text-green-600 text-sm font-medium">
+                    {selectedPartner?.category}
+                  </span>
+                </div>
+              </div>
+              
+              <p className="text-gray-600 mb-6">
+                {selectedPartner?.description}
+              </p>
+              <a
+                href={selectedPartner?.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
+              >
+                Visit Website
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v7m16-7v7a2 2 0 01-2 2h-7m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+      )}
     </div>
   );
 }
