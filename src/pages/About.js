@@ -7,13 +7,19 @@ import krisImage from "../assets/members/kris_vasallo.jpg";
 import phoebeImage from "../assets/members/phoebe_pahunang.jpg";
 import reinnaImage from "../assets/members/reinna_calo.jpg";
 import peterImage from "../assets/members/peterglenn_rapiz.jpg";
+import aidamaeImage from "../assets/members/aidamae_delcastillo.jpg";
+import joyImage from "../assets/members/joy_astorga.jpg";
+import kristylImage from "../assets/members/kristyl_ponferrada.jpg";
+import rodyardImage from "../assets/members/rodyard_camarin.jpg";
 import aboutBackground from "../assets/capilli_bgimages/capilliaboutpagebg.jpg";
 import foundersBg from "../assets/capilli_bgimages/capiilifoundersbg.jpg";
 import startupVideo from "../assets/capillistartupvideo.mp4";
 import haroldCard from "../assets/business_cards/haroldjohn_laborte.png";
+import joyCard from "../assets/business_cards/joyfranceska_astorga.png";
 import marianCard from "../assets/business_cards/marianceleste_llanes.png";
 import phoebeCard from "../assets/business_cards/phoebeaileen_pahunang.png";
 import reinnaCard from "../assets/business_cards/reinnakris_calo.png";
+import rodyardCard from "../assets/business_cards/rodyard_camarin.png";
 import zueinCard from "../assets/business_cards/zuein_guantero.png";
 import cardBack from "../assets/business_cards/businesscardback.png";
 import brochurePDF from "../assets/dlc_files/capillitrifoldbrochure.pdf";
@@ -28,95 +34,16 @@ function About() {
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
-  const [activeTab, setActiveTab] = useState("leadership");
 
-  const leadershipTeam = [
+  const teamMembers = [
     {
       image: haroldImage,
       businessCard: haroldCard,
       name: "Harold John Laborte",
-      position: "Chief Executive Officer",
+      position: "Chairperson | Chief Executive Officer",
       description:
-        "Harold is a social entrepreneur currently based in Iligan City, Philippines...",
-    },
-    {
-      image: zueinImage,
-      businessCard: zueinCard,
-      name: "Zuein Guantero",
-      position: "Chief Operating Officer",
-      description:
-        "Zuein is the President and Chief Operating Officer of Capilli Trading, Inc...",
-    },
-    {
-      image: phoebeImage,
-      businessCard: phoebeCard,
-      name: "Phoebe Aileen Pahunang",
-      position: "Chief Finance Officer",
-      description: "Phoebe manages the financial planning and analysis...",
-    },
-    {
-      image: reinnaImage,
-      businessCard: reinnaCard,
-      name: "Reinna Kris Calo",
-      position: "Chief Product Officer",
-      description:
-        "Reinna takes on the role of Chief Product Officer of Capilli Trading, Inc...",
-    },
-    {
-      image: peterImage,
-      name: "Peter Glenn Rapiz",
-      position: "Chief Commercial Officer",
-      description: "Peter carries the role of Chief Commercial Officer...",
-    },
-    {
-      image: marianImage,
-      businessCard: marianCard,
-      name: "Marian Celeste Llanes",
-      position: "VP Marketing",
-      description:
-        "Marian oversees marketing strategies and corporate communications...",
-    },
-  ];
-
-  const boardDirectors = [
-    {
-      image: haroldImage,
-      businessCard: haroldCard,
-      name: "Harold John Laborte",
-      position: "Chairperson",
-      description:
-        "Harold John Laborte serves as the Chairperson of the Board of Directors.",
-    },
-    {
-      image: krisImage,
-      name: "Krysthal Vasallo",
-      position: "Vice Chairperson",
-      description:
-        "Krysthal Vasallo serves as the Vice Chairperson of the Board of Directors.",
-    },
-    {
-      image: zueinImage,
-      businessCard: zueinCard,
-      name: "Zuein Guantero",
-      position: "President and Director",
-      description:
-        "Zuein Guantero serves as the President and Director of the Board.",
-    },
-    {
-      image: phoebeImage,
-      businessCard: phoebeCard,
-      name: "Phoebe Aileen Pahunang",
-      position: "Director",
-      description:
-        "Phoebe Aileen Pahunang serves as a Director of the Board.",
-    },
-    {
-      image: marianImage,
-      businessCard: marianCard,
-      name: "Marian Celeste Llanes",
-      position: "Corporate Secretary",
-      description:
-        "Marian Celeste Llanes serves as the Corporate Secretary of the Board.",
+        "Harold is a social entrepreneur currently based in Iligan City, Philippines. He is the Founder and CEO of Capilli Trading, Inc and Matter of Trust – Philippines. Harold graduated in 2015 with a degree in Business Economics at Xavier University – Ateneo de Cagayan where he once served as President of their university student council. He is finishing his Master’s Degree in Urban and Regional Planning at UP Diliman. Before founding Capilli, Harold has built his career in Revenue Management in the Airline and Hospitality industry. He is also part of Rev&You – a revenue management consulting company that supports hoteliers and hotel consultants in Europe, Australia, and the Philippines. Moreover, Harold is also a part-time faculty for Business and Entrepreneurship at the Mapua Malayan Digital College.",
+      delay: 0,
     },
     {
       image: null,
@@ -124,7 +51,90 @@ function About() {
       name: "Rose Jean Laborte",
       position: "Corporate Treasurer",
       description:
-        "Rose Jean Laborte serves as the Corporate Treasurer of the Board.",
+        "Rose manages Capilli Trading's financial operations, ensuring sustainable growth and fiscal responsibility in all business ventures.",
+      delay: 200,
+    },
+    {
+      image: marianImage,
+      businessCard: marianCard,
+      name: "Marian Celeste Llanes",
+      position: "Corporate Secretary | Vice President for Marketing",
+      description:
+        "Marian oversees marketing strategies and corporate communications, driving brand awareness and engagement.",
+      delay: 400,
+    },
+    {
+      image: zueinImage,
+      businessCard: zueinCard,
+      name: "Zuein A. Guantero",
+      position: "President | Director | Chief Operations Officer",
+      description:
+        "Zuein is the President and Chief Operating Officer of Capilli Trading, Inc. He holds a degree in Business Administration major in Marketing Management at Xavier University – Ateneo de Cagayan where he also got his MBA. In winter 2015, after college, he was chosen as one of the academic fellows for Social Entrepreneurship and Economic Development in Arizona State University in USA as part of the Young South East Asian Leaders Initiative (YSEALI). Zuein is one of the founders of Sketch bags, a social enterprise in partnership with women sewers at Xavier Ecoville, Brgy. Lumbia, Cagayan de Oro City, which manufactures eco-bags and event giveaways. Zuein used to be involved with Misamis Oriental Province’s Department of Trade and Industry as coordinator of the Negosyo Center from 2016 to 2019.",
+      delay: 600,
+    },
+    {
+      image: krisImage,
+      name: "Krysthal Vasallo",
+      position: "Vice Chairperson",
+      description:
+        "Lead and executed research projects related to waste hair utilization and waste hair management for Capilli. Collaborated with cross-functional teams to integrate research insights into Capilli's strategic plans and business operations.",
+      delay: 800,
+    },
+    {
+      image: phoebeImage,
+      businessCard: phoebeCard,
+      name: "Phoebe Aileen Pahunang",
+      position: "Director | Chief Financial Officer",
+      description:
+        "Phoebe manages the financial planning and analysis, ensuring the company's financial health and sustainability.",
+      delay: 1000,
+    },
+    {
+      image: reinnaImage,
+      businessCard: reinnaCard,
+      name: "Reinna Kris Calo",
+      position: "Chief Product Officer",
+      description:
+        "Reinna takes on the role of Chief Product Officer of Capilli Trading, Inc. She holds a degree in Fine Arts major in Product Design at the University of the Philippines. Her first stint after college in 2015 was with Design Studio Vito Selma where she worked as a Junior Designer focusing on Product Research, Design, and Development. In 2018, she left to work for the government under Lanao Del Norte’s Department of Trade and Industry until January of 2021 where she served as the In-house Designer and Negosyo Center’s Business Counselor. At present, she is affiliated with the Design Center of the Philippines as a Senior Industrial Design Specialist.",
+      delay: 1200,
+    },
+    {
+      image: peterImage,
+      name: "Peter Glenn Rapiz",
+      position: "Chief Commercial Officer",
+      description:
+        "Peter carries the role of Chief Commercial Officer for Capilli Trading, Inc. He graduated with a double degree in Community Development and Management in 2013 at the University of the Philippines – Visayas. He also holds a Master’s Degree in Public Administration from the University of Iloilo. At present, he is studying Law at the University of San Agustin Iloilo. In 2010, Peter was one of the selected Youth Ambassadors for the 37th Ship for Southeast Asian Youth Program by the National Youth Commission. Awarded in 2013 by the Philippine Center for Gifted Education and the Republic’s Office of the President, he was one of the National Awardees for “Mga Bagong Rizal: Pag-Asa ng Bayan.” Peter was affiliated with RedDoorz, a Southeast Asian Hotel Management Company offering affordable accommodations to partner properties, as its Regional Corporate Sales Manager in the Philippines. At present, he is Head of Sales of Ace Hotels Group.",
+      delay: 1400,
+    },
+    {
+      image: aidamaeImage,
+      name: "Aida Mae del Castillo",
+      position: "Executive Leadership",
+      description: "Aida is...",
+      delay: 1600,
+    },
+    {
+      image: joyImage,
+      businessCard: joyCard,
+      name: "Joy Franceska Astorga",
+      position: "Vice President for Corporate Resources",
+      description: "Joy is...",
+      delay: 1800,
+    },
+    {
+      image: kristylImage,
+      name: "Kristyl Bern Ponferrada",
+      position: "Founder",
+      description: "Kristyl is...",
+      delay: 2000,
+    },
+    {
+      image: rodyardImage,
+      businessCard: rodyardCard,
+      name: "Rodyard Camarin",
+      position: "Chief Commercial Officer",
+      description: "Rodyard is...",
+      delay: 2200,
     },
   ];
 
@@ -224,21 +234,21 @@ function About() {
   };
 
   const handlePrevMember = () => {
-    const currentIndex = leadershipTeam.findIndex(
+    const currentIndex = teamMembers.findIndex(
       (member) => member.name === selectedMember.name
     );
     const prevIndex =
-      currentIndex === 0 ? leadershipTeam.length - 1 : currentIndex - 1;
-    setSelectedMember(leadershipTeam[prevIndex]);
+      currentIndex === 0 ? teamMembers.length - 1 : currentIndex - 1;
+    setSelectedMember(teamMembers[prevIndex]);
   };
 
   const handleNextMember = () => {
-    const currentIndex = leadershipTeam.findIndex(
+    const currentIndex = teamMembers.findIndex(
       (member) => member.name === selectedMember.name
     );
     const nextIndex =
-      currentIndex === leadershipTeam.length - 1 ? 0 : currentIndex + 1;
-    setSelectedMember(leadershipTeam[nextIndex]);
+      currentIndex === teamMembers.length - 1 ? 0 : currentIndex + 1;
+    setSelectedMember(teamMembers[nextIndex]);
   };
 
   const handleCardClick = (businessCard, e) => {
@@ -330,136 +340,56 @@ function About() {
         }}
       >
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="fade-up text-4xl md:text-5xl font-bold text-white mb-8">
-              Our Team
-            </h2>
+          <h2 className="fade-up text-4xl md:text-5xl font-bold text-white text-center mb-16">
+            Our Founders
+          </h2>
 
-            {/* Tab Buttons */}
-            <div className="inline-flex rounded-lg bg-white/10 p-1 backdrop-blur-sm">
-              <button
-                onClick={() => setActiveTab("leadership")}
-                className={`px-6 py-2 rounded-lg transition-all duration-300 ${
-                  activeTab === "leadership"
-                    ? "bg-white text-green-800 shadow-lg"
-                    : "text-white hover:bg-white/10"
-                }`}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            {teamMembers.map((member, index) => (
+              <div
+                key={index}
+                className="fade-up group cursor-pointer aspect-square"
+                style={{ transitionDelay: `${index * 100}ms` }}
+                onClick={() => handleMemberClick(member)}
               >
-                Leadership Team
-              </button>
-              <button
-                onClick={() => setActiveTab("board")}
-                className={`px-6 py-2 rounded-lg transition-all duration-300 ${
-                  activeTab === "board"
-                    ? "bg-white text-green-800 shadow-lg"
-                    : "text-white hover:bg-white/10"
-                }`}
-              >
-                Board of Directors
-              </button>
-            </div>
-          </div>
-
-          {/* Leadership Team Tab Content */}
-          <div className={`${activeTab === "leadership" ? "block" : "hidden"}`}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-              {leadershipTeam.map((member, index) => (
-                <div
-                  key={index}
-                  className="fade-up group cursor-pointer aspect-square"
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                  onClick={() => handleMemberClick(member)}
-                >
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
-                    <div className="relative h-3/4 overflow-hidden">
-                      {member.useDefaultAvatar ? (
-                        <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                          <FaUserCircle className="w-3/4 h-3/4 text-gray-300" />
-                        </div>
-                      ) : (
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                          onError={(e) => {
-                            e.target.src = defaultImage;
-                          }}
-                          style={{
-                            objectFit: "cover",
-                            objectPosition:
-                              member.name === "Zuein Guantero"
-                                ? "center 30%"
-                                : member.name === "Harold John Laborte"
-                                ? "center 15%"
-                                : "50% 20%",
-                          }}
-                        />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div className="h-1/4 p-4 flex flex-col justify-center">
-                      <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-green-900 bg-clip-text text-transparent truncate">
-                        {member.name}
-                      </h3>
-                      <p className="mt-1 text-gray-600 text-sm truncate">
-                        {member.position}
-                      </p>
-                    </div>
+                <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
+                  <div className="relative h-3/4 overflow-hidden">
+                    {member.useDefaultAvatar ? (
+                      <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                        <FaUserCircle className="w-3/4 h-3/4 text-gray-300" />
+                      </div>
+                    ) : (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        onError={(e) => {
+                          e.target.src = defaultImage;
+                        }}
+                        style={{
+                          objectFit: "cover",
+                          objectPosition:
+                            member.name === "Zuein A. Guantero"
+                              ? "center 30%"
+                              : member.name === "Harold John Laborte"
+                              ? "center 15%"
+                              : "50% 20%",
+                        }}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                  <div className="h-1/4 p-4 flex flex-col justify-center">
+                    <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-green-900 bg-clip-text text-transparent truncate">
+                      {member.name}
+                    </h3>
+                    <p className="mt-1 text-gray-600 text-sm truncate">
+                      {member.position}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Board of Directors Tab Content */}
-          <div className={`${activeTab === "board" ? "block" : "hidden"}`}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-              {boardDirectors.map((member, index) => (
-                <div
-                  key={index}
-                  className="fade-up group cursor-pointer aspect-square"
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                  onClick={() => handleMemberClick(member)}
-                >
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full">
-                    <div className="relative h-3/4 overflow-hidden">
-                      {member.useDefaultAvatar ? (
-                        <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                          <FaUserCircle className="w-3/4 h-3/4 text-gray-300" />
-                        </div>
-                      ) : (
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                          onError={(e) => {
-                            e.target.src = defaultImage;
-                          }}
-                          style={{
-                            objectFit: "cover",
-                            objectPosition:
-                              member.name === "Zuein Guantero"
-                                ? "center 30%"
-                                : member.name === "Harold John Laborte"
-                                ? "center 15%"
-                                : "50% 20%",
-                          }}
-                        />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div className="h-1/4 p-4 flex flex-col justify-center">
-                      <h3 className="text-lg font-semibold bg-gradient-to-r from-green-600 to-green-900 bg-clip-text text-transparent truncate">
-                        {member.name}
-                      </h3>
-                      <p className="mt-1 text-gray-600 text-sm truncate">
-                        {member.position}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
