@@ -508,7 +508,7 @@ function Home() {
                           </div>
                           </div>
 
-                          /* Decorative wave effect at bottom */
+                          {/* Decorative wave effect at bottom */}
                           <div className="absolute bottom-0 left-0 right-0">
                           <svg
                           viewBox="0 0 1200 120"
@@ -521,7 +521,7 @@ function Home() {
                           </div>
                           </section>
 
-                          {/* Products Section */}
+{/* Products Section */}
                           <section
                           data-section="products"
                           className={`py-20 bg-green-50 transition-all duration-1000 relative ${
@@ -596,7 +596,7 @@ function Home() {
                           "Eco-friendly rugs made from recycled human hair, offering durability and unique aesthetic appeal.",
                           longDescription: "Our Hair Rugs are crafted from 100% recycled human hair, providing exceptional durability and a unique aesthetic appeal. These rugs are not only environmentally friendly but also possess natural oil-absorbing properties, making them perfect for areas prone to spills. Each rug undergoes a thorough cleaning and sanitizing process before being carefully woven into beautiful, functional pieces for your home or business.",
                           features: ["Eco-friendly", "Oil-absorbing", "Durable", "Non-slip", "Unique texture"],
-                          sizes: ["Small (2'x3')", "Medium (3'x5')", "Large (5'x7')", "Custom sizes available"],
+                          sizes: ["Small (8cm)", "Medium (15cm)", "Large (23cm)"],
                           careInstructions: "Clean with mild soap and water. Avoid harsh chemicals. Allow to air dry completely.",
                           shopeeLink: "https://shopee.ph/placeholder-hairrugs",
                           subcategories: [
@@ -612,14 +612,14 @@ function Home() {
                           },
                           {
                           image: hairMatImage,
-                          title: "Hair Plant Mats",
+                          title: "Grow Mats",
                           description:
-                          "Organic plant mats that provide essential nutrients to plants while reducing waste.",
+                          "Made from 100% sanitized waste human hair that are cut into circular pieces and used to help retain moisture content in soil, and it also releases nutrients that are food for the plants.",
                           longDescription: "Our Hair Plant Mats are innovative gardening solutions made from recycled human hair. These mats slowly release nitrogen and other essential nutrients as they decompose, promoting healthy plant growth while retaining soil moisture. Perfect for both indoor and outdoor gardens, these mats reduce the need for chemical fertilizers while helping to minimize waste in our environment.",
-                          features: ["100% biodegradable", "Nutrient-rich", "Moisture retention", "Weed suppression", "Eco-conscious design"],
-                          sizes: ["Small (8\" diameter)", "Medium (12\" diameter)", "Large (18\" diameter)", "Custom sizes available"],
+                          features: ["Nitrogen-Rich", "Natural Fertilizer", "Retains Moisture", "Supports Plant Growth", "Sustainable Organic Waste"],
+                          sizes: ["Small (8cm)", "Medium (15cm)", "Large (23cm)"],
                           careInstructions: "Place around plants and cover lightly with soil. Water as normal. Replace every 6-8 months for optimal results.",
-                          shopeeLink: "https://shopee.ph/placeholder-hairmats",
+                          shopeeLink: "https://shopee.ph/2-pcs-15cm-Mulching-Mats-for-Plants-Medium-i.1111051754.22385938432",
                           subcategories: [
                           {
                           image: hairMat1,
