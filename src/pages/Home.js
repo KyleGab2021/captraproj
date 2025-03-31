@@ -846,7 +846,7 @@ function Home() {
           </div>
 
           <div className="carousel-container relative">
-            {/* Left and right fade overlays */}
+            {/* Left and right fade overlays for visual effect */}
             <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-100 to-transparent z-10"></div>
             <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-100 to-transparent z-10"></div>
 
@@ -866,18 +866,18 @@ function Home() {
                     className="sponsor-logo cursor-pointer"
                     onClick={() => handlePartnerClick(logo)}
                   >
-                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 w-full h-full flex items-center justify-center">
+                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
                       <img
                         src={logo.src}
-                        alt={logo.alt}
-                        className="max-h-16 md:max-h-20 w-auto object-contain"
+                        alt={logo.alt || `Partner ${index + 1}`}
+                        className="object-contain"
                       />
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Duplicate set of logos for seamless scrolling */}
+              {/* Duplicate set of logos for seamless infinite scrolling */}
               <div className="logo-group">
                 {sponsorLogos.map((logo, index) => (
                   <div
@@ -885,11 +885,11 @@ function Home() {
                     className="sponsor-logo cursor-pointer"
                     onClick={() => handlePartnerClick(logo)}
                   >
-                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 w-full h-full flex items-center justify-center">
+                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
                       <img
                         src={logo.src}
-                        alt={logo.alt}
-                        className="max-h-16 md:max-h-20 w-auto object-contain"
+                        alt={logo.alt || `Partner ${index + 1}`}
+                        className="object-contain"
                       />
                     </div>
                   </div>
@@ -1420,11 +1420,11 @@ function Home() {
 
       {/* Add Partner Modal */}
       {isPartnerModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl w-full max-w-lg relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl w-full max-w-lg relative animate-scale-in mx-4">
             <button
               onClick={() => setIsPartnerModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2"
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 bg-white rounded-full p-2 shadow-md hover:scale-110 transition-all duration-200"
             >
               <svg
                 className="w-6 h-6"
@@ -1441,46 +1441,51 @@ function Home() {
               </svg>
             </button>
 
-            <div className="p-8"></div>
-            <div className="flex items-center mb-6">
-              <img
-                src={selectedPartner?.src}
-                alt={selectedPartner?.alt}
-                className="h-16 w-auto object-contain mr-4"
-              />
-              <div>
-                <h3 className="text-2xl font-bold text-gray-800">
-                  {selectedPartner?.alt}
-                </h3>
-                <span className="text-green-600 text-sm font-medium">
-                  {selectedPartner?.category}
-                </span>
+            <div className="p-8">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-8">
+                <div className="bg-gray-50 p-4 rounded-xl flex items-center justify-center w-24 h-24 shrink-0">
+                  <img
+                    src={selectedPartner?.src}
+                    alt={selectedPartner?.alt || "Partner logo"}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div>
+                  
+                  <span className="text-green-600 text-sm font-medium block mb-2">
+                    {selectedPartner?.category || "Partner Organization"}
+                  </span>
+                  <div className="border-t border-gray-200 pt-4 mt-2">
+                    <p className="text-gray-600">{selectedPartner?.description}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center sm:justify-start">
+                <a
+                  href={selectedPartner?.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  Visit Website
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 6H6a2 2 0 00-2 2v7m16-7v7a2 2 0 01-2 2h-7m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
-
-            <p className="text-gray-600 mb-6">{selectedPartner?.description}</p>
-            <a
-              href={selectedPartner?.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
-            >
-              Visit Website
-              <svg
-                className="w-4 h-4 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M10 6H6a2 2 0 00-2 2v7m16-7v7a2 2 0 01-2 2h-7m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </a>
           </div>
         </div>
       )}
