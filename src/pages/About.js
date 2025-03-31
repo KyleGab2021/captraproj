@@ -17,10 +17,12 @@ import reinnaCard from "../assets/business_cards/reinnakris_calo.png";
 import zueinCard from "../assets/business_cards/zuein_guantero.png";
 import cardBack from "../assets/business_cards/businesscardback.png";
 import brochurePDF from "../assets/dlc_files/capillitrifoldbrochure.pdf";
+import ContactModal from "../components/ContactModal";
 
 function About() {
   const [selectedMember, setSelectedMember] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const defaultImage =
     "https://placehold.co/400x600/10A54A/ffffff?text=Team+Member";
   const [selectedAward, setSelectedAward] = useState(null);
@@ -950,20 +952,7 @@ function About() {
 
       {/* Sticky Message Icon */}
       <button
-        onClick={() => {
-          window.location.href = "/#contact";
-          setTimeout(() => {
-            const contactSection = document.getElementById("contact");
-            if (contactSection) {
-              const yOffset = -80;
-              const y =
-                contactSection.getBoundingClientRect().top +
-                window.pageYOffset +
-                yOffset;
-              window.scrollTo({ top: y, behavior: "smooth" });
-            }
-          }, 100);
-        }}
+        onClick={() => setIsContactModalOpen(true)}
         className="fixed bottom-8 right-8 z-50 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
         aria-label="Contact Us"
       >
@@ -982,6 +971,9 @@ function About() {
           />
         </svg>
       </button>
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </div>
   );
 }
