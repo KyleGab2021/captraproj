@@ -8,7 +8,7 @@ import phoebeImage from "../assets/members/phoebe_pahunang.jpg";
 import reinnaImage from "../assets/members/reinna_calo.jpg";
 import peterImage from "../assets/members/peterglenn_rapiz.jpg";
 import aboutBackground from "../assets/capilli_bgimages/capilliaboutpagebg.jpg";
-import foundersBg from "../assets/capilli_bgimages/capiilifoundersbg.jpg";
+import foundersBg from "../assets/capilli_bgimages/capillifoundersbg.jpg";
 import startupVideo from "../assets/capillistartupvideo.mp4";
 import haroldCard from "../assets/business_cards/haroldjohn_laborte.png";
 import marianCard from "../assets/business_cards/marianceleste_llanes.png";
@@ -17,14 +17,20 @@ import reinnaCard from "../assets/business_cards/reinnakris_calo.png";
 import zueinCard from "../assets/business_cards/zuein_guantero.png";
 import cardBack from "../assets/business_cards/businesscardback.png";
 import brochurePDF from "../assets/dlc_files/capillitrifoldbrochure.pdf";
+import startupAward2023 from "../assets/awards-recognitions_images/startupoftheyear2023_awardrecoimage.jpg";
+import startupfounderAward2023 from "../assets/awards-recognitions_images/startupfounderoftheyear2023_awardrecoimage.jpg";
+import oraclenetsuiteAward2023 from "../assets/awards-recognitions_images/oraclenetsuiteaward2023_awardrecoimage.jpg";
+import bpinegosyokoAward2023 from "../assets/awards-recognitions_images/bpinegosyokoaward2023_awardrecoimage.jpg";
+import excellenceAdvocacyAward2024 from "../assets/awards-recognitions_images/excellenceadvocacy_awardrecoimage.png";
+import youngentrepreneuroutstanding2024 from "../assets/awards-recognitions_images/youngentrepreneuroutstanding2024_awardrecoimage.jpg";
+import thesisImage from "../assets/idsthesis_image.png";
+import companyLogo from "../assets/capillitradinglogoonly.png";
 import ContactModal from "../components/ContactModal";
 
 function About() {
   const [selectedMember, setSelectedMember] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const defaultImage =
-    "https://placehold.co/400x600/10A54A/ffffff?text=Team+Member";
   const [selectedAward, setSelectedAward] = useState(null);
   const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
@@ -32,6 +38,8 @@ function About() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [activeTab, setActiveTab] = useState("leadership");
 
+  const defaultImage = "https://placehold.co/400x600/10A54A/ffffff?text=Team+Member";
+  
   const leadershipTeam = [
     {
       image: haroldImage,
@@ -57,6 +65,14 @@ function About() {
       description: "Phoebe manages the financial planning and analysis...",
     },
     {
+      image: marianImage,
+      businessCard: marianCard,
+      name: "Marian Celeste Llanes",
+      position: "Vice President for Marketing Officer",
+      description:
+        "Marian oversees marketing strategies and corporate communications...",
+    },
+    {
       image: reinnaImage,
       businessCard: reinnaCard,
       name: "Reinna Kris Calo",
@@ -70,14 +86,6 @@ function About() {
       position: "Chief Commercial Officer",
       description: "Peter carries the role of Chief Commercial Officer...",
     },
-    {
-      image: marianImage,
-      businessCard: marianCard,
-      name: "Marian Celeste Llanes",
-      position: "VP Marketing",
-      description:
-        "Marian oversees marketing strategies and corporate communications...",
-    },
   ];
 
   const boardDirectors = [
@@ -88,13 +96,6 @@ function About() {
       position: "Chairperson",
       description:
         "Harold John Laborte serves as the Chairperson of the Board of Directors.",
-    },
-    {
-      image: krisImage,
-      name: "Krysthal Vasallo",
-      position: "Vice Chairperson",
-      description:
-        "Krysthal Vasallo serves as the Vice Chairperson of the Board of Directors.",
     },
     {
       image: zueinImage,
@@ -109,8 +110,7 @@ function About() {
       businessCard: phoebeCard,
       name: "Phoebe Aileen Pahunang",
       position: "Director",
-      description:
-        "Phoebe Aileen Pahunang serves as a Director of the Board.",
+      description: "Phoebe Aileen Pahunang serves as a Director of the Board.",
     },
     {
       image: marianImage,
@@ -119,6 +119,13 @@ function About() {
       position: "Corporate Secretary",
       description:
         "Marian Celeste Llanes serves as the Corporate Secretary of the Board.",
+    },
+    {
+      image: krisImage,
+      name: "Krysthal Vasallo",
+      position: "Vice Chairperson",
+      description:
+        "Krysthal Vasallo serves as the Vice Chairperson of the Board of Directors.",
     },
     {
       image: null,
@@ -132,86 +139,76 @@ function About() {
 
   const awards = [
     {
-      image:
-        "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&auto=format&fit=crop&q=60",
-      title: "2022 Champion",
-      organization: "Bluepreneurs Asia Ventures Pitch Competition",
-      description:
-        "Recognized for innovative business model and impactful sustainable solutions in the Asian entrepreneurship landscape.",
-      date: "2022",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?w=800&auto=format&fit=crop&q=60",
-      title: "2022 Most Inspiring Youth Entrepreneur",
-      organization: "Local City Government of Iligan, Philippines",
-      description:
-        "Acknowledged for exemplary leadership and innovative contributions to sustainable entrepreneurship.",
-      date: "2022",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=800&auto=format&fit=crop&q=60",
-      title: "2023 Start-Up of the Year and Founder of the Year Awards",
-      organization: "New Energy NEXUS Philippines",
-      description:
-        "Recognized for outstanding achievements in sustainable business innovation and leadership.",
-      date: "2023",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&auto=format&fit=crop&q=60",
-      title: "2023 BPI Direct BanKo Negosyo Ko Award",
-      organization: "BPI Foundation, BPI Direct BanKo, and Bayan Academy",
-      description:
-        "Honored for excellence in business development and sustainable entrepreneurship.",
-      date: "2023",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=60",
-      title: "2023 Start-Up of the Year",
-      organization: "Local City Government of Iligan, Philippines",
-      description:
-        "Recognized for significant contributions to local economic development and innovation.",
-      date: "2023",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&auto=format&fit=crop&q=60",
-      title:
-        "2023 Recipient of the Oracle Netsuite Social Impact Award Donation",
-      organization: "Oracle NetSuite",
-      description:
-        "Selected for outstanding social impact and sustainable business practices.",
-      date: "2023",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1507099985932-87a4520ed1d5?w=800&auto=format&fit=crop&q=60",
-      title: "2024 Good Design Awards (Finalist)",
+      image: "https://images.unsplash.com/photo-1507099985932-87a4520ed1d5?w=800&auto=format&fit=crop&q=60",
+      title: "Good Design Awards Finalist",
       organization: "Design Center of the Philippines",
       description:
         "Recognized for excellence in sustainable product design and innovation.",
       date: "2024",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&auto=format&fit=crop&q=60",
-      title: "2024 Young Entrepreneur Outstanding Awardee",
-      organization: "Local City Government of Iligan, Philippines",
+      image: youngentrepreneuroutstanding2024,
+      title: "Young Entrepreneur Outstanding Awardee",
+      organization: "Local City Government of Iligan, Philippines", 
       description:
-        "Awarded for exceptional entrepreneurial achievement and community impact.",
+        "Our Chairman and CEO, Mr. Harold John Laborte, was recently honored with the Young Entrepreneur Outstanding Award at the 2024 Pasigarbo sa Diyandi: Youth Leadership and Excellence Awards in Iligan City. This recognition highlights the vital role of young entrepreneurs in driving innovation and empowering communities. It also marks our third local recognition from the Iligan City Government—following the Most Inspiring Youth Enterprise award in 2022 and Start-up of the Year in 2023—reflecting our continued commitment to excellence, leadership, and community growth in Iligan and beyond.",
       date: "2024",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60",
-      title: "2024 Excellence in Advocacy Communications Award",
+      image: excellenceAdvocacyAward2024,
+      title: "Excellence in Advocacy Communications Award",
       organization: "Local City Government of Iligan, Philippines",
       description:
-        "Recognized for effective communication and promotion of sustainable initiatives.",
+        "Capilli Trading Inc. is honored to receive the Excellence in Advocacy Communication Award at the Iligan Business Awards, presented by the City Government of Iligan. This recognition highlights our strong commitment to sustainability, environmental responsibility, and community empowerment. At Capilli, we go beyond offering eco-friendly products—we advocate for meaningful change by raising awareness on upcycling human hair waste and promoting sustainable practices.",
       date: "2024",
+    },
+    {
+      image: startupAward2023,
+      title: "Start-Up of the Year",
+      organization: "Iligan Business Awards Night",
+      description:
+        "Capilli Trading Inc. is honored to receive the Excellence in Advocacy Communication Award at the Iligan Business Awards, presented by the City Government of Iligan. This recognition highlights our strong commitment to sustainability, environmental responsibility, and community empowerment. At Capilli, we go beyond offering eco-friendly products—we advocate for meaningful change by raising awareness on upcycling human hair waste and promoting sustainable practices.",
+      date: "2023",
+    },
+    {
+      image:  startupfounderAward2023,
+      title: "Start-Up & Founder of the Year Awards",
+      organization: "New Energy NEXUS Philippines",
+      description:
+        "Capilli proudly received the Startup of the Year award from NEXPH, a recognition that celebrates our innovation, impact, and growth as a rising player in the startup ecosystem. Adding to this milestone, our CEO, Harold John Laborte, was honored as Founder of the Year—a testament to his visionary leadership, dedication, and commitment to building a company that drives meaningful change. These awards reflect not only our team’s hard work and passion but also our mission to lead with purpose and create value for the communities we serve.",
+      date: "2023",
+    },
+    {
+      image: bpinegosyokoAward2023,
+      title: "BPI Direct BanKo Negosyo Ko Award", 
+      organization: "BPI Foundation, BPI Direct BanKo, and Bayan Academy",
+      description:
+        "Capilli is the recipient of the BPI Direct BanKo Negosyo Ko Award from the recently concluded 2023 BPI Sinag Synergy Social Entrepreneurship Challenge. This special award is given to a social enterprise who best exemplifies the combination of outstanding financial performance and meaningful social impact. We are thankful for BPI Direct BanKo, BPI Foundation, Inc., and Bayan Academy for your support in our mission to make a difference - one hair strand at a time.",
+      date: "2023",
+    },
+    {
+      image: oraclenetsuiteAward2023,
+      title: "Netsuite Social Impact Recipient Award",
+      organization: "Oracle NetSuite",
+      description:
+        "Capilli is excited to announce that we have joined the global network of NetSuite Social Impact customers that are using technology to ignite positive change. Thanks to NetSuite's customizable software, we'll be able to improve our operations and contribute to our mission of mitigating the environmental impacts of human waste hair and, at the same time, empowering communities. We are truly grateful for this opportunity and the recognition that we can truly make a positive impact - one hair strand at a time!",
+      date: "2023",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&auto=format&fit=crop&q=60",
+      title: "Pitch Champion",
+      organization: "Bluepreneurs Asia Ventures",
+      description:
+        "Recognized for innovative business model and impactful sustainable solutions in the Asian entrepreneurship landscape.",
+      date: "2022",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?w=800&auto=format&fit=crop&q=60",
+      title: "Most Inspiring Youth Entrepreneur",
+      organization: "Local City Government of Iligan, Philippines",
+      description:
+        "Acknowledged for exemplary leadership and innovative contributions to sustainable entrepreneurship.",
+      date: "2022",
     },
   ];
 
@@ -297,25 +294,59 @@ function About() {
         </div>
       </section>
 
-      {/* Description Section */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="fade-up max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 hover:shadow-[0_20px_50px_rgba(8,45,15,0.1)] transition-shadow duration-500">
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
-              Capilli is a Mindanao-based social enterprise start-up that
-              upcycles human waste hair for various industries. Its mission is
-              to create sustainable solutions from human hair waste, making it a
-              pioneer in waste treatment and pollution remediation. Capilli
-              collects human waste hair from salons and barbershops, preventing
-              it from ending up in landfills, and works with a community
-              cooperative of unemployed women and mothers to produce by-products
-              using innovative hair felting technology.
-            </p>
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-              Currently, Capilli offers better, cheaper, and more sustainable
-              spill kit alternatives for oil and chemical spills, as well as
-              mats for horticulture and gardening support.
-            </p>
+      {/* Thesis Section */}
+      <section className="container mx-auto px-6 py-20 relative">
+        {/* Company Logo - Positioned as separate element, centered horizontally */}
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
+          <div className="w-48 h-48 rounded-full bg-white p-4 shadow-xl border-8 border-green-50 transition-all duration-300 hover:scale-110 hover:rotate-12">
+            <img
+              src={companyLogo}
+              alt="Capilli Trading Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden relative">
+          <div className="flex flex-col md:flex-row">
+            {/* Left Column - Thesis Description */}
+            <div className="md:w-1/2 p-6 md:p-8 pt-20 flex flex-col justify-center">
+              <h2 className="text-2xl font-bold text-green-800 mb-4">
+                Our Thesis
+              </h2>
+              <div className="prose prose-lg">
+                <p className="text-gray-700 mb-4">
+                  The foundation of Capilli Trading emerged from comprehensive
+                  research at MSU-IIT's Industrial Design Studies program,
+                  focusing on sustainable hair waste management solutions.
+                </p>
+                <p className="text-gray-700 mb-4">
+                  CEO Harold John Laborte hatched up his research thesis on his
+                  senior high school days, which was later on developed into a
+                  startup company that aims to revolutionize the hair waste
+                  management industry.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column - Thesis Image */}
+            <div className="md:w-1/2 bg-gray-100">
+              <div className="h-[300px] relative">
+                <img
+                  src={thesisImage}
+                  alt="Thesis Research Documentation"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0">
+                  <div className="bg-gradient-to-t from-black/60 to-transparent absolute inset-0"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-white text-sm text-center relative z-10">
+                      Original thesis research documentation at MSU-IIT
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -347,7 +378,7 @@ function About() {
                     : "text-white hover:bg-white/10"
                 }`}
               >
-                Leadership Team
+                Leadership Officers
               </button>
               <button
                 onClick={() => setActiveTab("board")}
@@ -973,7 +1004,10 @@ function About() {
       </button>
 
       {/* Contact Modal */}
-      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </div>
   );
 }

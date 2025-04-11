@@ -1,26 +1,43 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./Home.css";
-import hairMatImage from "../assets/capilliproducthairmat.jpg";
-import hairRugImage from "../assets/capilliproducthairrug.jpg";
-import logoImage from "../assets/capillitradinglogotext.png";
-import ideya from "../assets/partners_logo/ideya_sponsorlogo.png";
+//Partners
 import matterOfTrust from "../assets/partners_logo/matteroftrust_sponsorlogo.png";
 import sanRoqueHpp from "../assets/partners_logo/sanroquehpp_sponsorlogo.png";
 import socialImpactOracle from "../assets/partners_logo/socialimpactoraclesuite_sponsorlogo.png";
 import wtGardens from "../assets/partners_logo/wtgardens_sponsorlogo.png";
-import heroBackground from "../assets/capilli_bgimages/capillihomepagebg.jpg";
-import aboutBackground from "../assets/capilli_bgimages/capillihomepagebg.jpg";
-import advocacyImg1 from "../assets/capilli_bgimages/capilliadvocacyimg1.jpg";
-import advocacyImg2 from "../assets/capilli_bgimages/capilliadvocacyimg2.jpg";
-import advocacyImg3 from "../assets/capilli_bgimages/capilliadvocacyimg3.jpg";
-import advocacyImg4 from "../assets/capilli_bgimages/capilliadvocacyimg4.jpg";
-import advocacyImg5 from "../assets/capilli_bgimages/capilliadvocacyimg5.jpg";
-import productCatalog from "../assets/dlc_files/capilliproductcatalog.pdf";
+//Incubators/Accelerators
+import ideya from "../assets/partners_logo/ideya_sponsorlogo.png";
+import bpi from "../assets/partners_logo/bpisinag-foundation-bayanacademy_sponsorlogo.png";
+import nexus from "../assets/partners_logo/newenergynexus_sponsorlogo.jpg";
+import qbo from "../assets/partners_logo/qboinnovation_sponsorlogo.jpg";
+import villgro from "../assets/partners_logo/villgrophilippines_sponsorlogo.jpg";
+import bridge from "../assets/partners_logo/thebridgeinternational_sponsorlogo.jpg";
+import undp from "../assets/partners_logo/undp-philippines_sponsorlogo.png";
+import ateneo from "../assets/partners_logo/ateneobluenest_sponsorlogo.png";
+//Products
+import hairMatImage from "../assets/capilliproducthairmat.jpg";
+import hairRugImage from "../assets/capilliproducthairrug.jpg";
 import hairRug1 from "../assets/capilliproducthairrug1.png";
 import hairRug2 from "../assets/capilliproducthairrug2.png";
 import hairMat1 from "../assets/capilliproducthairmat1.jpg";
 import hairMat2 from "../assets/capilliproducthairmat2.jpg";
+//Background Images
+import servicesBackground from "../assets/capilli_bgimages/capilliservicesbg.jpg";
+import newsBackground from "../assets/capilli_bgimages/capillinewsbg.jpg";
+import heroBackground1 from "../assets/capilli_bgimages/capillihomepagebg1.jpg";
+import heroBackground2 from "../assets/capilli_bgimages/capillihomepagebg2.jpg";
+import heroBackground3 from "../assets/capilli_bgimages/capillihomepagebg3.jpg";
+import heroBackground4 from "../assets/capilli_bgimages/capillihomepagebg4.jpg";
+import heroBackground5 from "../assets/capilli_bgimages/capillihomepagebg5.jpg";
+import aboutBackground from "../assets/capilli_bgimages/capilliaboutpagebg.jpg";
+import advocacyBackground from "../assets/capilli_bgimages/capilliadvocacybg.jpg";
+import advocacyImg1 from "../assets/capilli_bgimages/capilliadvocacyimg1.jpg";
+import advocacyImg2 from "../assets/capilli_bgimages/capilliadvocacyimg2.jpg";
+import advocacyImg3 from "../assets/capilli_bgimages/capilliadvocacyimg3.jpg";
+import advocacyImg4 from "../assets/capilli_bgimages/capilliadvocacyimg4.jpg";
+//Miscellaneous
 import ContactModal from "../components/ContactModal";
+import logoImage from "../assets/capillitradinglogotext.png";
 
 // Product Image Carousel Component
 const ProductImageCarousel = ({ selectedProduct }) => {
@@ -28,8 +45,8 @@ const ProductImageCarousel = ({ selectedProduct }) => {
 
   const nextImage = (e) => {
     e.stopPropagation();
-    setCurrentImageIndex((prevIndex) =>
-      (prevIndex + 1) % selectedProduct.images.length
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex + 1) % selectedProduct.images.length
     );
   };
 
@@ -146,7 +163,17 @@ function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
+  const [activePartnerTab, setActivePartnerTab] = useState("partners");
+  const [currentBgSlide, setCurrentBgSlide] = useState(0);
   const carouselRef = useRef(null);
+
+  const heroBackgrounds = [
+    heroBackground1,
+    heroBackground2,
+    heroBackground3,
+    heroBackground4,
+    heroBackground5,
+  ];
 
   const handlePartnerClick = (partner) => {
     setSelectedPartner(partner);
@@ -158,7 +185,73 @@ function Home() {
     advocacyImg2,
     advocacyImg3,
     advocacyImg4,
-    advocacyImg5,
+  ];
+
+  const incubatorLogos = [
+    {
+      src: ideya,
+      alt: "",
+      description:
+        "iDEYA is a driven set of startup enablers aiming to change the world through ideas and innovation. ",
+      website: "https://ideya.msuiit.edu.ph",
+      category: "Innovation Partner",
+    },
+    {
+      src: bpi,
+      alt: "",
+      description:
+        "BPI Sinag Foundation x Bayan Academy empowers social enterprises through capacity building and financial support to create sustainable impact.",
+      website: "https://www.bpi.com.ph/foundation",
+      category: "Financial Support Partner",
+    },
+    {
+      src: qbo,
+      alt: "",
+      description:
+        "QBO Innovation Hub is the Philippines' first public-private partnership platform for Filipino startups.",
+      website: "https://www.qbo.com.ph/",
+      category: "Innovation Hub",
+    },
+    {
+      src: bridge,
+      alt: "",
+      description:
+        "The Bridge International accelerates the growth of startups through mentorship and market access.",
+      website: "https://thebridgeinternational.com/",
+      category: "International Accelerator",
+    },
+    {
+      src: undp,
+      alt: "",
+      description:
+        "UNDP Philippines works to achieve sustainable development through innovation and partnerships.",
+      website: "https://www.ph.undp.org/",
+      category: "Development Partner",
+    },
+    {
+      src: villgro,
+      alt: "",
+      description:
+        "Villgro Philippines supports and invests in early-stage social enterprises that are building innovative solutions.",
+      website: "https://villgrophilippines.org/",
+      category: "Social Enterprise Incubator",
+    },
+    {
+      src: ateneo,
+      alt: "",
+      description:
+        "Ateneo Blue Nest nurtures student entrepreneurs and startup founders through mentorship and resources.",
+      website: "https://www.ateneo.edu/",
+      category: "Academic Incubator",
+    },
+    {
+      src: nexus,
+      alt: "",
+      description:
+        "New Energy Nexus supports clean energy entrepreneurs with funding and acceleration programs.",
+      website: "https://www.newenergynexus.com/",
+      category: "Energy Innovation Partner",
+    },
   ];
 
   useEffect(() => {
@@ -168,6 +261,14 @@ function Home() {
 
     return () => clearInterval(slideInterval);
   }, [advocacyImages.length]); // Added advocacyImages.length as dependency
+
+  useEffect(() => {
+    const bgInterval = setInterval(() => {
+      setCurrentBgSlide((prev) => (prev + 1) % heroBackgrounds.length);
+    }, 7000); // slide animation time interval
+
+    return () => clearInterval(bgInterval);
+  }, [heroBackgrounds.length]);
 
   const handleIntersection = useCallback((entries) => {
     entries.forEach((entry) => {
@@ -263,12 +364,37 @@ function Home() {
       <section className="relative h-screen flex flex-col justify-center items-center px-4">
         {/* Background image with overlay */}
         <div className="absolute inset-0 z-0">
-          <img
-            src={heroBackground}
-            alt="Background"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-green-900/80 to-black/80"></div>
+          {heroBackgrounds.map((bg, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                currentBgSlide === index ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <img
+                src={bg}
+                alt={`Background ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-green-900/80 to-black/80"></div>
+            </div>
+          ))}
+
+          {/* Modified Slide indicators - now vertical and on the left */}
+          <div className="absolute top-1/2 left-8 -translate-y-1/2 flex flex-col space-y-3 z-20">
+            {heroBackgrounds.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentBgSlide(index)}
+                className={`h-8 transition-all duration-300 
+                  ${currentBgSlide === index 
+                    ? "w-2.5 bg-white" 
+                    : "w-2 bg-white/50 hover:bg-white/80"
+                  } rounded-full`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Content */}
@@ -276,10 +402,10 @@ function Home() {
           <img
             src={logoImage}
             alt="Capilli Trading Logo"
-            className="max-h-48 md:max-h-56 lg:max-h-64 mx-auto mb-8 float-animation"
+            className="max-h-72 md:max-h-80 lg:max-h-96 mx-auto mb-8 float-animation"
           />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Walang sayang ang <span className="text-[#047857]">buhok</span> mo.
+            Walang sayang sa <span className="text-[#047857]">buhok</span> mo.
           </h1>
           <p className="text-xl md:text-2xl lg:text-2xl text-gray-200 mb-10">
             Hair as a product. Hair as an innovation. Hair as a solution.
@@ -293,40 +419,13 @@ function Home() {
         className={`py-24 relative overflow-hidden transition-all duration-1000 ${
           isIntersecting["advocacy"] ? "opacity-100" : "opacity-70"
         }`}
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(20, 83, 45, 0.95), rgba(20, 83, 45, 0.85)), url(${advocacyBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
       >
-        {/* Gradient background with subtle pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-800 to-green-900">
-          <div className="absolute inset-0 opacity-5">
-            <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-              <pattern
-                id="sustainPattern"
-                patternUnits="userSpaceOnUse"
-                width="80"
-                height="80"
-                patternTransform="scale(2) rotate(0)"
-              >
-                <path
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="1"
-                  d="M20,10 Q30,5 40,10 T60,10 M20,30 Q30,25 40,30 T60,30 M20,50 Q30,45 40,50 T60,50 M20,70 Q30,65 40,70 T60,70"
-                />
-                <circle cx="10" cy="10" r="2" fill="white" opacity="0.5" />
-                <circle cx="70" cy="10" r="2" fill="white" opacity="0.5" />
-                <circle cx="10" cy="70" r="2" fill="white" opacity="0.5" />
-                <circle cx="70" cy="70" r="2" fill="white" opacity="0.5" />
-              </pattern>
-              <rect
-                x="0"
-                y="0"
-                width="100%"
-                height="100%"
-                fill="url(#sustainPattern)"
-              />
-            </svg>
-          </div>
-        </div>
-
         <div className="container mx-auto px-6 relative z-10">
           <div className="mb-16 text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
@@ -502,22 +601,6 @@ function Home() {
                         valuable resources, reducing environmental impact while
                         creating sustainable products.
                       </p>
-                      <button className="mt-4 px-6 py-2 bg-white text-green-700 font-medium rounded-lg hover:bg-green-700 hover:text-white transition-colors inline-flex items-center">
-                        Join Our Movement
-                        <svg
-                          className="w-4 h-4 ml-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          ></path>
-                        </svg>
-                      </button>
                     </div>
 
                     {/* Slide indicators */}
@@ -645,7 +728,7 @@ function Home() {
                 title: "Grow Mats",
                 description:
                   "Made from 100% sanitized waste human hair that are cut into circular pieces and used to help retain moisture content in soil, and it also releases nutrients that are food for the plants.",
-                longDescription: 
+                longDescription:
                   "Our Grow Mats are made from 100% sanitized waste human hair, carefully processed into circular pieces that help retain moisture in soil. These innovative mats slowly release essential nutrients like nitrogen, making them an excellent natural fertilizer for plants. Perfect for both indoor and outdoor gardens, our Grow Mats support sustainable agriculture while reducing waste.",
                 features: [
                   "Nitrogen-Rich",
@@ -847,100 +930,286 @@ function Home() {
         )}
       </section>
 
-      {/* Download Catalog Section */}
-      <div className="container mx-auto px-6 pb-20 bg-green-50">
-        <div className="flex justify-center">
-          <a
-            href={productCatalog}
-            download="capilliproductcatalog.pdf"
-            className="group flex items-center gap-3 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
-          >
-            <svg
-              className="w-6 h-6 transition-transform duration-300 group-hover:scale-110"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            <span className="text-lg font-medium">Download Product Catalog</span>
-          </a>
-        </div>
-      </div>
-
-      {/* Partners Section */}
+      {/* Services Section */}
       <section
-        data-section="sponsors"
+        className="py-20 relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(20, 83, 45, 0.95), rgba(20, 83, 45, 0.85)), url(${servicesBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Our Services
+            </h2>
+            <div className="w-24 h-1 bg-green-300 mx-auto mb-8"></div>
+            <p className="text-gray-100 max-w-2xl mx-auto">
+              Turn your waste hair into valuable resources with our services
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Modal 1 - What We Want */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center text-center group hover:scale-105 hover:bg-green-600 hover:shadow-xl">
+              <div className="bg-green-100 p-4 rounded-full mb-6 transition-colors group-hover:bg-white">
+                <svg
+                  className="w-8 h-8 text-green-600 transition-colors group-hover:text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 transition-colors group-hover:text-white">
+                WHAT DO WE WANT?
+              </h3>
+              <h4 className="text-lg font-semibold text-green-600 mb-4 transition-colors group-hover:text-white">
+                Requirements
+              </h4>
+              <div className="flex-grow flex items-center">
+                <p className="text-gray-600 transition-colors group-hover:text-white">
+                  The hair should measure at least 1-24 inches in length to meet the
+                  requirements for upcycling and reuse.
+                </p>
+              </div>
+            </div>
+
+            {/* Modal 2 - What You Get */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center text-center group hover:scale-105 hover:bg-green-600 hover:shadow-xl">
+              <div className="bg-green-100 p-4 rounded-full mb-6 transition-colors group-hover:bg-white">
+                <svg
+                  className="w-8 h-8 text-green-600 transition-colors group-hover:text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 transition-colors group-hover:text-white">
+                WHAT DO YOU GET?
+              </h3>
+              <h4 className="text-lg font-semibold text-green-600 mb-4 transition-colors group-hover:text-white">
+                Incentives
+              </h4>
+              <div className="flex-grow flex items-center">
+                <p className="text-gray-600 transition-colors group-hover:text-white">
+                  If you have a business that involves human hair supply, then
+                  donate exclusively to Capilli and receive an incentive ranging from
+                  ₱8.00 to ₱6,500.00 per kilo, depending on hair quality and
+                  length.
+                </p>
+              </div>
+            </div>
+
+            {/* Modal 3 - How to Send */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center text-center group hover:scale-105 hover:bg-green-600 hover:shadow-xl">
+              <div className="bg-green-100 p-4 rounded-full mb-6 transition-colors group-hover:bg-white">
+                <svg
+                  className="w-8 h-8 text-green-600 transition-colors group-hover:text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2 transition-colors group-hover:text-white">
+                HOW DO YOU SEND IT?
+              </h3>
+              <h4 className="text-lg font-semibold text-green-600 mb-4 transition-colors group-hover:text-white">
+                Contacts
+              </h4>
+              <div className="flex-grow flex items-center">
+                <p className="text-gray-600 transition-colors group-hover:text-white">
+                  If you're located in Iligan City or nearby areas, feel free to reach out to our Business Development Executive, Jayralee, at 0997-993-9451.
+                  For those outside Iligan City, please contact our Business Development Manager, Shareiz, at 0935-935-1383.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners & Incubators Section */}
+      <section
+        data-section="partners"
         className={`py-20 bg-gray-100 transition-all duration-1000 ${
-          isIntersecting["sponsors"] ? "opacity-100" : "opacity-70"
+          isIntersecting["partners"] ? "opacity-100" : "opacity-70"
         }`}
       >
         <div className="container mx-auto px-6">
           <div className="mb-16 text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-              Our Partners
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-8">
+              Our Partners & Incubators
             </h2>
+
+            {/* Tab Buttons */}
+            <div className="inline-flex rounded-lg bg-white/10 p-1 backdrop-blur-sm shadow-lg mb-8">
+              <button
+                onClick={() => setActivePartnerTab("partners")}
+                className={`px-6 py-2 rounded-lg transition-all duration-300 ${
+                  activePartnerTab === "partners"
+                    ? "bg-green-600 text-white shadow-lg"
+                    : "text-gray-600 hover:bg-gray-50"
+                }`}
+              >
+                Partners
+              </button>
+              <button
+                onClick={() => setActivePartnerTab("incubators")}
+                className={`px-6 py-2 rounded-lg transition-all duration-300 ${
+                  activePartnerTab === "incubators"
+                    ? "bg-green-600 text-white shadow-lg"
+                    : "text-gray-600 hover:bg-gray-50"
+                }`}
+              >
+                Incubators
+              </button>
+            </div>
+
             <div className="w-24 h-1 bg-green-500 mx-auto"></div>
             <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
-              Working together with these amazing organizations to create
-              positive change
+              {activePartnerTab === "partners"
+                ? "Working together with these amazing organizations to create positive change"
+                : "Supported by leading organizations that help us grow and innovate"}
             </p>
           </div>
 
-          <div className="carousel-container relative">
-            {/* Left and right fade overlays for visual effect */}
-            <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-100 to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-100 to-transparent z-10"></div>
+          {/* Partners Tab Content */}
+          <div
+            className={`${
+              activePartnerTab === "partners" ? "block" : "hidden"
+            }`}
+          >
+            <div className="carousel-container relative">
+              <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-100 to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-100 to-transparent z-10"></div>
 
-            {/* Carousel content */}
-            <div
-              ref={carouselRef}
-              className="carousel-slide auto-scrolling"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-              style={{ animationPlayState: isHovering ? "paused" : "running" }}
-            >
-              {/* First set of logos */}
-              <div className="logo-group">
-                {sponsorLogos.map((logo, index) => (
-                  <div
-                    key={`logo-1-${index}`}
-                    className="sponsor-logo cursor-pointer"
-                    onClick={() => handlePartnerClick(logo)}
-                  >
-                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
-                      <img
-                        src={logo.src}
-                        alt={logo.alt || `Partner ${index + 1}`}
-                        className="object-contain"
-                      />
+              <div
+                ref={carouselRef}
+                className="carousel-slide auto-scrolling"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+                style={{
+                  animationPlayState: isHovering ? "paused" : "running",
+                }}
+              >
+                {/* First set of partner logos */}
+                <div className="logo-group">
+                  {sponsorLogos.map((logo, index) => (
+                    <div
+                      key={`partner-1-${index}`}
+                      className="sponsor-logo cursor-pointer"
+                      onClick={() => handlePartnerClick(logo)}
+                    >
+                      <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
+                        <img
+                          src={logo.src}
+                          alt={logo.alt || `Partner ${index + 1}`}
+                          className="object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Duplicate set of partner logos */}
+                <div className="logo-group">
+                  {sponsorLogos.map((logo, index) => (
+                    <div
+                      key={`partner-2-${index}`}
+                      className="sponsor-logo cursor-pointer"
+                      onClick={() => handlePartnerClick(logo)}
+                    >
+                      <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
+                        <img
+                          src={logo.src}
+                          alt={logo.alt || `Partner ${index + 1}`}
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
+            </div>
+          </div>
 
-              {/* Duplicate set of logos for seamless infinite scrolling */}
-              <div className="logo-group">
-                {sponsorLogos.map((logo, index) => (
-                  <div
-                    key={`logo-2-${index}`}
-                    className="sponsor-logo cursor-pointer"
-                    onClick={() => handlePartnerClick(logo)}
-                  >
-                    <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
-                      <img
-                        src={logo.src}
-                        alt={logo.alt || `Partner ${index + 1}`}
-                        className="object-contain"
-                      />
+          {/* Incubators Tab Content */}
+          <div
+            className={`${
+              activePartnerTab === "incubators" ? "block" : "hidden"
+            }`}
+          >
+            <div className="carousel-container relative">
+              <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-100 to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-100 to-transparent z-10"></div>
+
+              <div
+                className="carousel-slide auto-scrolling"
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+                style={{
+                  animationPlayState: isHovering ? "paused" : "running",
+                }}
+              >
+                {/* First set of incubator logos */}
+                <div className="logo-group">
+                  {incubatorLogos.map((logo, index) => (
+                    <div
+                      key={`incubator-1-${index}`}
+                      className="sponsor-logo cursor-pointer"
+                      onClick={() => handlePartnerClick(logo)}
+                    >
+                      <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
+                        <img
+                          src={logo.src}
+                          alt={logo.alt || `Incubator ${index + 1}`}
+                          className="object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Duplicate set of incubator logos */}
+                <div className="logo-group">
+                  {incubatorLogos.map((logo, index) => (
+                    <div
+                      key={`incubator-2-${index}`}
+                      className="sponsor-logo cursor-pointer"
+                      onClick={() => handlePartnerClick(logo)}
+                    >
+                      <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-24">
+                        <img
+                          src={logo.src}
+                          alt={logo.alt || `Incubator ${index + 1}`}
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -953,6 +1222,12 @@ function Home() {
         className={`py-20 bg-[#047857] relative transition-all duration-1000 ${
           isIntersecting["news"] ? "opacity-100" : "opacity-70"
         }`}
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(20, 83, 45, 0.95), rgba(20, 83, 45, 0.85)), url(${newsBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
       >
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
@@ -961,7 +1236,7 @@ function Home() {
             </h2>
             <div className="w-24 h-1 bg-green-300 mx-auto"></div>
             <p className="text-gray-100 mt-6 max-w-2xl mx-auto">
-              Stay updated with our latest developments and initiatives
+              Stay updated with Capilli's latest business ventures
             </p>
           </div>
 
@@ -1030,76 +1305,21 @@ function Home() {
           isIntersecting["contact"] ? "opacity-100" : "opacity-70"
         }`}
       >
-        {/* Hair-inspired background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-b from-green-800 to-green-900">
-          <div className="absolute inset-0 opacity-10">
-            <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-              <pattern
-                id="hairPattern"
-                patternUnits="userSpaceOnUse"
-                width="100"
-                height="100"
-                patternTransform="scale(2) rotate(5)"
-              >
-                {/* Wavy hair strand 1 */}
-                <path
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="2"
-                  d="M10,30 C20,10 30,50 40,30 C50,10 60,50 70,30"
-                />
-                {/* Wavy hair strand 2 */}
-                <path
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="2"
-                  d="M0,60 C10,40 20,80 30,60 C40,40 50,80 60,60"
-                />
-                {/* Curly hair strand */}
-                <path
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  d="M15,85 C25,65 5,65 15,45 C25,25 5,25 15,5"
-                />
-                <path
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  d="M55,95 C65,75 45,75 55,55 C65,35 45,35 55,15"
-                />
-                <path
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  d="M85,85 C95,65 75,65 85,45 C95,25 75,25 85,5"
-                />
-              </pattern>
-              <rect
-                x="0"
-                y="0"
-                width="100%"
-                height="100%"
-                fill="url(#hairPattern)"
-              />
-            </svg>
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-        </div>
+        {/* Simple white background */}
+        <div className="absolute inset-0 bg-white"></div>
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
               Contact Us
             </h2>
             <div className="w-24 h-1 bg-green-400 mx-auto"></div>
-            <p className="text-gray-200 mt-6 max-w-2xl mx-auto">
+            <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
               Have questions about our sustainable hair products or want to
               collaborate? Reach out to us today.
             </p>
           </div>
-
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 overflow-hidden">
             <div className="flex flex-col md:flex-row">
               {/* Impact & Mission Side - Replacing redundant contact info */}
               <div
@@ -1109,53 +1329,36 @@ function Home() {
                     : "-translate-x-10 opacity-0"
                 }`}
               >
-                <div className="relative z-10">
-                  <div className="flex items-center mb-6">
-                    <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4">
-                      <img
-                        src={logoImage}
-                        alt="Capilli Trading Logo"
-                        className="h-10 w-10 object-contain"
-                      />
-                    </div>
-                    <h3 className="text-2xl font-bold">Our Impact</h3>
-                  </div>
-
-                  <div className="border-t border-white border-opacity-20 my-6"></div>
-
-                  <div className="mb-8">
-                    <h4 className="text-lg font-semibold mb-6">
+                <div className="relative z-10 h-full">
+                  <div className="flex flex-col h-full justify-between">
+                    <h4 className="text-lg font-semibold mb-8">
                       Sustainable Hair Solutions
                     </h4>
 
                     {/* Impact Statistics */}
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="bg-white bg-opacity-10 rounded-lg p-4 text-center">
-                        <span className="block text-3xl font-bold mb-1">
+                    <div className="flex flex-col space-y-6">
+                      <div className="bg-white bg-opacity-10 rounded-lg p-6 text-center">
+                        <span className="block text-4xl font-bold mb-2">
                           1.2M+
                         </span>
                         <span className="text-sm text-gray-200">
                           Pounds of Hair Recycled
                         </span>
                       </div>
-                      <div className="bg-white bg-opacity-10 rounded-lg p-4 text-center">
-                        <span className="block text-3xl font-bold mb-1">
+                      <div className="bg-white bg-opacity-10 rounded-lg p-6 text-center">
+                        <span className="block text-4xl font-bold mb-2">
                           85%
                         </span>
                         <span className="text-sm text-gray-200">
                           Waste Reduction
                         </span>
                       </div>
-                      <div className="bg-white bg-opacity-10 rounded-lg p-4 text-center">
-                        <span className="block text-3xl font-bold mb-1">
-                          50+
-                        </span>
-                        <span className="text-sm text-gray-200">
-                          Partner Organizations
-                        </span>
+                      <div className="bg-white bg-opacity-10 rounded-lg p-6 text-center">
+                        <span className="block text-4xl font-bold mb-2">5</span>
+                        <span className="text-sm text-gray-200">Partners</span>
                       </div>
-                      <div className="bg-white bg-opacity-10 rounded-lg p-4 text-center">
-                        <span className="block text-3xl font-bold mb-1">
+                      <div className="bg-white bg-opacity-10 rounded-lg p-6 text-center">
+                        <span className="block text-4xl font-bold mb-2">
                           24
                         </span>
                         <span className="text-sm text-gray-200">
@@ -1163,51 +1366,7 @@ function Home() {
                         </span>
                       </div>
                     </div>
-
-                    <p className="text-gray-200 mb-6">
-                      At Capilli Trading, we transform waste hair into
-                      sustainable products while supporting local communities
-                      and reducing environmental impact.
-                    </p>
-
-                    {/* Sustainability Promise */}
-                    <div className="bg-white bg-opacity-10 p-4 rounded-lg mb-6">
-                      <h5 className="font-semibold flex items-center mb-2">
-                        <svg
-                          className="w-5 h-5 mr-2 text-green-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                        Our Sustainability Promise
-                      </h5>
-                      <p className="text-sm text-gray-200">
-                        Every product we create helps reduce environmental waste
-                        while providing innovative, eco-friendly solutions for
-                        everyday use.
-                      </p>
-                    </div>
                   </div>
-                </div>
-
-                {/* Decorative hair strand elements */}
-                <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-20">
-                  <svg
-                    viewBox="0 0 500 150"
-                    preserveAspectRatio="none"
-                    className="h-full w-full"
-                  >
-                    <path
-                      d="M0,100 C30,120 70,80 100,100 C130,120 170,80 200,100 C230,120 270,80 300,100 C330,120 370,80 400,100 C430,120 470,80 500,100 L500,150 L0,150 Z"
-                      fill="white"
-                    ></path>
-                  </svg>
                 </div>
               </div>
 
@@ -1219,221 +1378,92 @@ function Home() {
                     : "translate-x-10 opacity-0"
                 }`}
               >
-                <form className="flex flex-col">
+                <form className="flex flex-col h-full">
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                    Send us a message
+                    Send A Message
                   </h3>
 
-                  {/* Name field with hair-related icon */}
-                  <div className="mb-6">
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Your Name
+                  {/* Name field with floating label */}
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      id="name"
+                      className="form-control peer"
+                      placeholder=" "
+                    />
+                    <label htmlFor="name" className="floating-label">
+                      Name
                     </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg
-                          className="w-5 h-5 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                          ></path>
-                        </svg>
-                      </div>
-                      <input
-                        type="text"
-                        id="name"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                        placeholder="John Doe"
-                      />
-                    </div>
                   </div>
 
-                  {/* Email field with icon */}
-                  <div className="mb-6">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
+                  {/* Email field with floating label */}
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      id="email"
+                      className="form-control peer"
+                      placeholder=" "
+                    />
+                    <label htmlFor="email" className="floating-label">
                       Email Address
                     </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg
-                          className="w-5 h-5 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          ></path>
-                        </svg>
-                      </div>
-                      <input
-                        type="email"
-                        id="email"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                        placeholder="example@email.com"
-                      />
-                    </div>
                   </div>
 
-                  {/* Topic selection - relevant to hair products */}
-                  <div className="mb-6">
-                    <label
-                      htmlFor="topic"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                  {/* Topic selection with floating label */}
+                  <div className="form-group">
+                    <select
+                      id="topic"
+                      className="form-control peer"
+                      defaultValue=""
                     >
-                      Topic
+                      <option value="" disabled></option>
+                      <option value="products">Hair Products</option>
+                      <option value="partnership">Business Partnership</option>
+                      <option value="sustainability">
+                        Sustainability Programs
+                      </option>
+                      <option value="other">Other Inquiry</option>
+                    </select>
+                    <label htmlFor="topic" className="floating-label">
+                      Select Topic
                     </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg
-                          className="w-5 h-5 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-                          ></path>
-                        </svg>
-                      </div>
-                      <select
-                        id="topic"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all appearance-none bg-white"
-                      >
-                        <option value="">Select a topic</option>
-                        <option value="products">Hair Products</option>
-                        <option value="partnership">
-                          Business Partnership
-                        </option>
-                        <option value="sustainability">
-                          Sustainability Programs
-                        </option>
-                        <option value="other">Other Inquiry</option>
-                      </select>
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <svg
-                          className="w-5 h-5 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 9l-7 7-7-7"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
                   </div>
 
-                  {/* Message field with icon */}
-                  <div className="mb-8">
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
+                  {/* Message field with floating label */}
+                  <div className="form-group">
+                    <textarea
+                      id="message"
+                      rows="5"
+                      className="form-control peer"
+                      placeholder=" "
+                    ></textarea>
+                    <label htmlFor="message" className="floating-label">
                       Message
                     </label>
-                    <div className="relative">
-                      <div className="absolute left-0 top-0 pt-3 pl-3 pointer-events-none">
-                        <svg
-                          className="w-5 h-5 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                          ></path>
-                        </svg>
-                      </div>
-                      <textarea
-                        id="message"
-                        rows="5"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                        placeholder="How can we help you?"
-                      ></textarea>
-                    </div>
                   </div>
 
-                  {/* Submit button with icon */}
-                  <button
-                    type="submit"
-                    className="flex items-center justify-center px-6 py-4 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 shadow-lg"
-                  >
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                  {/* Submit button container - Modified classes */}
+                  <div className="mt-auto self-end">
+                    <button
+                      type="submit"
+                      className="flex items-center justify-center px-8 py-4 bg-green-600 text-white text-lg font-medium rounded-lg hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 shadow-lg"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      ></path>
-                    </svg>
-                    Send Message
-                  </button>
-
-                  {/* Decorative hair-inspired corner element */}
-                  <div className="absolute bottom-0 right-0 opacity-5">
-                    <svg
-                      width="180"
-                      height="180"
-                      viewBox="0 0 200 200"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10,40 C40,0 80,80 120,40 C160,0 200,80 180,120"
-                        stroke="#047857"
-                        strokeWidth="8"
+                      <svg
+                        className="w-8 h-8 mr-4"
                         fill="none"
-                      />
-                      <path
-                        d="M20,80 C60,40 100,120 140,80 C180,40 220,120 200,160"
-                        stroke="#047857"
-                        strokeWidth="6"
-                        fill="none"
-                      />
-                      <path
-                        d="M30,120 C70,80 110,160 150,120 C190,80 230,160 210,200"
-                        stroke="#047857"
-                        strokeWidth="4"
-                        fill="none"
-                      />
-                    </svg>
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        ></path>
+                      </svg>
+                      Send Message
+                    </button>
                   </div>
                 </form>
               </div>

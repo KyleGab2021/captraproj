@@ -11,9 +11,9 @@
   }
 }
 
-.float-animation {
+/* .float-animation {
   animation: float 2.5s ease-in-out infinite;
-}
+} */
 
 /* Gradient text for special headings */
 .text-gradient {
@@ -96,7 +96,7 @@
 
 /* Sponsor logo styles */
 .sponsor-logo {
-  transition: all 0.3s ease;
+  transition: all 5s ease;
 }
 
 .sponsor-logo:hover {
@@ -126,7 +126,6 @@
   width: calc(100% + 1.3px);
   height: 70px;
 }
-
 
 /* Wave divider styling */
 .wave-divider path {
@@ -195,7 +194,7 @@
 }
 
 .auto-scrolling {
-  animation: autoScroll 20s linear infinite;
+  animation: autoScroll 10s linear infinite;
 }
 
 /* Media query for smaller screens - faster animation and smaller logos */
@@ -234,4 +233,48 @@
       transform: translateX(calc(-120px * 5)); /* Further adjusted for mobile */
     }
   }
+}
+
+/* Floating Label Styles */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 1rem;
+  background-color: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  border-color: #10B981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+.floating-label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 0.25rem;
+  color: #6B7280;
+  pointer-events: none;
+  transform-origin: left top;
+  transition: all 0.2s ease-out;
+  background-color: transparent;
+}
+
+.form-control:focus ~ .floating-label,
+.form-control:not(:placeholder-shown) ~ .floating-label {
+  transform: translateY(-1.4rem) scale(0.85);
+  background-color: white;
+  color: #10B981;
+}
+
+.form-control:focus ~ .floating-label {
+  color: #10B981;
 }
